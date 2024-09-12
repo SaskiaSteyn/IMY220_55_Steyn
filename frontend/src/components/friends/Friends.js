@@ -1,5 +1,6 @@
 import React from 'react'
 import { FaUser } from "react-icons/fa6"
+import { Link } from 'react-router-dom'
 
 
 class SingleFriend extends React.Component{
@@ -11,7 +12,6 @@ class SingleFriend extends React.Component{
     render(){
         return(
             <div>
-                
                 <div className="friend_card">
                     <div className="friend_profile">
                         <FaUser />
@@ -20,7 +20,7 @@ class SingleFriend extends React.Component{
                         <h4>Santa Clause</h4>
                     </div>
                     <div>
-                        <button>Add friend</button>
+                        <Link to="/friendprofile"><button>Add friend</button></Link>
                     </div>
                 </div>
                 

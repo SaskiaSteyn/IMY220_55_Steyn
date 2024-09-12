@@ -1,4 +1,5 @@
 import React from 'react'
+import CurrentPlaylist from '../components/home/CurrentPlaylist'
 import CurrentSong from '../components/home/CurrentSong'
 import Navbar from '../components/Navbar'
 import PlaylistPreview from '../components/playlist/PlaylistPreview'
@@ -9,6 +10,7 @@ class Home extends React.Component{
         return(
             <div className="fullPage">
                 <ProfilePreview />
+                <CurrentPlaylist />
                 <div className="entry_content">
                     <div className="navBar">
                         <Navbar />
