@@ -51,14 +51,8 @@ class PlaylistCreate extends React.Component {
                     </div>
 
                     <div className="create_playlist_component">
-                        <label>Add Friends:</label><br/>
-                        <input 
-                            type="text" 
-                            name="friends" 
-                            value={this.state.friends} 
-                            placeholder="Type friend's name and press enter" 
-                            onChange={this.handleInputChange} 
-                        />
+                        <Link to="/addfriend"><button>Add friends</button></Link>
+                        
                     </div>
 
                     <div>
