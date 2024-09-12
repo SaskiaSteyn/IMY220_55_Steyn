@@ -9,6 +9,7 @@ import Login from './pages/Login'
 import Playlist from './pages/Playlist'
 import Profile from './pages/Profile'
 import Signup from './pages/Signup'
+import AddFriend from './pages/AddFriend'
 
 class App extends React.Component{
 
@@ -29,6 +30,7 @@ class App extends React.Component{
                         <Route path="/editplaylist" element={<EditPlaylist />} />
                         <Route path="/createplaylist" element={<CreatePlaylist />} />
                         <Route path="/addsong" element={<AddSong />} />
+                        <Route path="/addfriend" element={<AddFriend />} />
                     </Routes>
             </BrowserRouter>
         );

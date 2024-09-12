@@ -1,5 +1,6 @@
 import React from 'react'
-import { FaCirclePlus, FaImage, FaUser } from "react-icons/fa6"
+import { FaCirclePlus, FaImage } from "react-icons/fa6"
+import FriendPreview from '../friends/FriendPreview'
 import AddSongToPlaylist from './AddSongToPlaylist'
 
 
@@ -31,8 +32,8 @@ class SingleSong extends React.Component{
                     {this.state.hidden && <AddSongToPlaylist />}
                 </div>
                 
-                <div className="friend_icon"><FaUser /></div>
-                <div className="friend_icon"><FaUser /></div>
+                <FriendPreview />
+                <FriendPreview />
             </div>
         );
     }
