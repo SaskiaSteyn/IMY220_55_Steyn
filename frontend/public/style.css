@@ -1,0 +1,403 @@
+nav a{
+  margin: 0.5%;
+}
+
+nav{
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main layout */
+
+.fullPage{
+  padding-bottom: 150px;
+}
+
+.entry_content{
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.main_content{
+  flex: 1; 
+  padding: 2% 10% 2% 5%;
+  
+}
+
+.navBar{
+  width: 350px; 
+  padding: 2% 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+.login_page{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.songDiv h4{
+  margin: 1% 3%;
+}
+
+.searchBar{
+  margin: 0.5%;
+}
+
+.songDiv{
+  position: relative;
+  border: solid 1px #ccc;
+  padding: 1%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.songDiv:hover{
+  background-color: #efefef;
+}
+
+.songDiv p{
+  margin: 1% 3%;
+}
+
+.songDetails{
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+}
+
+.add_btn{
+  background-color: transparent;
+  border: none;
+}
+
+.del_btn{
+  background-color: transparent;
+  border: none;
+}
+
+.addToPlaylist{
+  border: solid 1px black;
+  padding: 1%;
+  position: absolute;
+  top: 100%; 
+  left: 0; 
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 1000; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 200px;
+}
+
+.deleteConfirmation{
+  border: solid 1px black;
+  padding: 2%;
+  position: absolute;
+  top: 100%; 
+  left: 0; 
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 1000; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 200px;
+}
+
+.confirm_del_btns{
+  margin: 10% 0%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+}
+
+.deleteConfirmation p{
+  margin: 10% 0%;
+}
+
+.addToPlaylistBtn{
+  padding: 0% 3%;
+  position: relative;
+  margin: 1% 3%;
+}
+
+.deleteSongBtn{
+  padding: 0% 3%;
+  position: relative;
+  margin: 1% 3%;
+}
+
+.addToPlaylist p:hover{
+  background-color: black;
+  color: white;
+}
+
+.coverimage{
+  width: 80px;
+  height: 80px;
+  border: solid 1px #ccc;
+}
+
+.coverimage_song{
+  width: 50px;
+  height: 50px;
+  border: solid 1px #ccc;
+}
+
+.playlistPreview{
+  border: solid 1px black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.playlistPreview p{
+  margin: 1%;
+}
+
+.playlist_list{
+  display: flex;
+  flex-direction: row;
+}
+
+.songs{
+  margin: 1% 0%;
+}
+
+.playlist_icons{
+  display: flex;
+  flex-direction: row;
+  max-width: 50%;
+  margin: 3% 0%;
+  justify-content: space-around;
+}
+
+.playlist_icons svg{
+  width: 30px;
+  height: 30px;
+}
+
+.playlist_header{
+  display: flex;
+  flex-direction: row;
+}
+
+.playlist_header p{
+  margin: 0% 3%;
+}
+
+.user_preview{
+  margin: 2% 0%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.profile_image{
+  margin: 0% 3%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border: solid 1px #ccc;
+  border-radius: 100px;
+}
+
+.playlist_name{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.friend_icon{
+  width: 30px;
+  height: 30px;
+  border: solid 1px #ccc;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.friend_icon svg{
+  width: 15px;
+  height: 15px;
+}
+
+.create_playlist_component{
+  margin: 5% 0%;
+}
+
+/* Comment section */
+
+
+.single_comment{
+  margin: 3% 0%;
+}
+
+.comment_icon{
+  flex: 0.4;
+  display: flex;
+}
+
+.commentor_icon{
+  width: 50px;
+  height: 50px;
+  border: solid 1px #ccc;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.comment_txt{
+  flex: 3;
+}
+
+.comment{
+  margin: 7% 0% 3% 0%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.comment_txt h4{
+  margin-top: 0%;
+}
+
+.comment_btns{
+  max-width: 20%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.add_comment_wrapper{
+  padding-top: 2%;
+  padding-left: 12%;
+}
+
+
+/* END comment section */
+
+/* Nav playlist preview */
+
+.nav_playlistPreview{
+  margin: 0;
+  box-sizing: border-box;
+  padding: 2% 7%;
+  border-top: solid 1px #ccc;
+  border-bottom: solid 1px #ccc;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav_playlistPreview h4{
+  margin: 0%;
+}
+
+.nav_playlistPreview p{
+  margin: 0%;
+}
+
+.nav_playlistPreview_song_info{
+  display: flex;
+  flex-direction: row;
+  align-content: space-evenly;
+}
+
+.nav_coverimage{
+  width: 80px;
+  height: 80px;
+  border: solid 1px #ccc;
+}
+
+/* END playlust preview */
+
+/* Current song */
+
+
+.current_song{
+  background-color: #fff;
+  padding: 2%; 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.song_art_and_info{
+  width: 250px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.song_info{
+  display: flex;
+  flex-direction: column;
+}
+
+.song_info p{
+  margin: 0;
+}
+
+.song_info h4{
+  margin: 0;
+}
+
+.song_and_playlist_info{
+  display: flex;
+  flex-direction: row;
+}
+
+.audio_controls{
+  text-align: center;
+  width: 350px;
+}
+
+.play_skip_rewind{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.play_skip_rewind svg{
+  width: 30px;
+  height: 30px;
+}
+
+.other_controls{
+  width: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.other_controls svg{
+  width: 20px;
+  height: 20px;
+}
+
+/* END current song */
