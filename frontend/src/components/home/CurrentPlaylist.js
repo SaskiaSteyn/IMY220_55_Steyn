@@ -25,10 +25,10 @@ class CurrentPlaylist extends React.Component{
                             <p>10 hours</p>
                         </div>
                         <div className="curr_playliist_friends">
-                            <FriendPreview />
-                            <FriendPreview />
-                            <FriendPreview />
-                            <FriendPreview />
+                            <FriendPreview friendID="10"/>
+                            <FriendPreview friendID="11"/>
+                            <FriendPreview friendID="12"/>
+                            <FriendPreview friendID="13"/>
                         </div>
                         <div>
                             <p>Johan, Patterson, Rori and 1 other can edit this playlist</p>

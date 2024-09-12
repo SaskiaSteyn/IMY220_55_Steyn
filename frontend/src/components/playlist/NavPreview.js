@@ -11,7 +11,7 @@ class NavPreview extends React.Component{
     
     render(){
         return(
-            <Link to="/playlist" className="nav_playlistPreview">
+            <Link to={"/playlist/" + this.props.playlistID} className="nav_playlistPreview">
                     <p className="nav_coverimage"><FaImage /></p>
                     <div >
                         <h4><strong>Playlist name</strong></h4>

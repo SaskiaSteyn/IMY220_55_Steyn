@@ -27,9 +27,10 @@ nav{
 
 .navBar{
   width: 350px; 
-  padding: 2% 5%;
+  padding: 2%;
   display: flex;
   flex-direction: column;
+  border-right: solid 0.5px #ccc;
 }
 
 .login_page{
@@ -477,7 +478,9 @@ nav{
   align-items: center;
   justify-content: center;
   width: 100%;
+  padding: 2% 0%;
   margin: 3% 0%;
+  border-bottom: solid 0.5px #ccc;
 }
 
 .curr_playlist_wrapper{

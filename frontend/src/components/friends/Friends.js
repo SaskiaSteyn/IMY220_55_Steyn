@@ -20,7 +20,7 @@ class SingleFriend extends React.Component{
                         <h4>Santa Clause</h4>
                     </div>
                     <div>
-                        <Link to="/friendprofile"><button>Add friend</button></Link>
+                        <Link to={"/friendprofile/" + this.props.friendID}><button>View profile</button></Link>
                     </div>
                 </div>
                 

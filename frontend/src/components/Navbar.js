@@ -5,6 +5,11 @@ import NavPreview from './playlist/NavPreview'
 import { Link } from 'react-router-dom'
 
 class Navbar extends React.Component{
+
+    constructor(props){
+        super(props);
+    }
+
     render(){
         return(
             <nav>
@@ -15,11 +20,11 @@ class Navbar extends React.Component{
                <hr/>
             
                 <h3>Your playlists</h3>
-                <NavPreview />
-                <NavPreview />
-                <NavPreview />
-                <NavPreview />
-                <NavPreview />
+                {this.props.playlists.map((playlist, index) => {
+                    return(
+                        <NavPreview playlistID = {playlist}/>
+                    );
+                })}
             </nav>
         )
     }
