@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import AddSong from './pages/AddSong'
 import CreatePlaylist from './pages/CreatePlaylist'
 import EditPlaylist from './pages/EditPlaylist'
 import { default as EditingProfile } from './pages/EditProfile'
@@ -27,6 +28,7 @@ class App extends React.Component{
                         <Route path="/playlist" element={<Playlist />} />
                         <Route path="/editplaylist" element={<EditPlaylist />} />
                         <Route path="/createplaylist" element={<CreatePlaylist />} />
+                        <Route path="/addsong" element={<AddSong />} />
                     </Routes>
             </BrowserRouter>
         );

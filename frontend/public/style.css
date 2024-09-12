@@ -401,3 +401,14 @@ nav{
 }
 
 /* END current song */
+
+/* Add a song */
+
+.add_song_edit{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* END Add a song */
