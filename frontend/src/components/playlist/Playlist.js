@@ -20,7 +20,7 @@ class PlaylistFullView extends React.Component{
                     <FaPlay />
                     <FaShuffle />
                     <FaRepeat />
-                    <FaCirclePlus />
+                    <Link to="/addsong"><FaCirclePlus /></Link>
                     <Link to="/editplaylist"><FaPen /></Link>
                 </div>
                 <div className="playlist_header">
