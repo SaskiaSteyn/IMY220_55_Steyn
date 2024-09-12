@@ -8,10 +8,10 @@ class NavbarProfile extends React.Component{
             <nav>
                 <Link to="/">Home</Link>
                 <hr/>
-                <p>Settings</p>
-                <p>Playlists</p>
-                <p>Friends</p>
-                <p>Logout</p>
+                <Link to="/profile">Profile Settings</Link>
+                <Link to="/personalplaylists">Playlists</Link>
+                <Link to="/friends">Friends</Link>
+                <Link to="/login">Logout</Link>
             </nav>
         )
     }

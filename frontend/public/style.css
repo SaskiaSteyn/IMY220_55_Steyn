@@ -10,7 +10,7 @@ nav{
 /* Main layout */
 
 .fullPage{
-  padding-bottom: 150px;
+  padding-bottom: 100px;
 }
 
 .entry_content{
@@ -294,6 +294,13 @@ nav{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: flex-end;
+}
+
+.add_comment_btns{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
 .add_comment_wrapper{
@@ -344,8 +351,9 @@ nav{
 
 
 .current_song{
+  border-top: solid 1px #ccc;
   background-color: #fff;
-  padding: 2%; 
+  padding: 1% 3%; 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -460,3 +468,44 @@ nav{
 
 
 /* END add a friend */
+
+/* Current playlist */
+
+.current_playlist{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 3% 0%;
+}
+
+.curr_playlist_wrapper{
+  display: flex;
+  flex-direction: row;
+  width: 600px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.curr_playlist_wrapper p{
+  margin: 0;
+}
+
+.curr_playlist_cover svg{
+  width: 150px;
+  height: 150px;
+}
+
+.playlist_song_details{
+  display: flex;
+  flex-direction: row;
+}
+
+.curr_playliist_friends{
+  display: flex;
+  flex-direction: row;
+  margin: 3% 0%;
+}
+
+/* END current playlist */
