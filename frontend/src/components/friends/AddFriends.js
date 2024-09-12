@@ -1,5 +1,5 @@
 import React from 'react'
-import Search from '../Home/Search'
+import Search from '../home/Search'
 import SingleFriend from './Friends'
 
 
