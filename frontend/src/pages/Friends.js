@@ -14,9 +14,9 @@ class FriendsPage extends React.Component{
                     <div className="main_content">
                         <h2>Your list of friends</h2>
                         <div className="known_friends">
-                            < SingleFriend />
-                            < SingleFriend />
-                            < SingleFriend />
+                            < SingleFriend  friendID={"7"}/>
+                            < SingleFriend  friendID={"8"}/>
+                            < SingleFriend  friendID={"9"}/>
                         </div>
                         <AddingFriends />
                     </div>

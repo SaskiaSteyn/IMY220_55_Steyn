@@ -1,5 +1,6 @@
 import React from 'react'
 import { FaUser } from "react-icons/fa6"
+import { Link } from 'react-router-dom'
 
 
 class FriendPreview extends React.Component{
@@ -12,7 +13,7 @@ class FriendPreview extends React.Component{
         return(
             <div>
                 <div className="friend_image">
-                    <FaUser />
+                    <Link to={"/friendprofile/" + this.props.friendID}><FaUser /></Link>
                 </div>
             </div>
         );

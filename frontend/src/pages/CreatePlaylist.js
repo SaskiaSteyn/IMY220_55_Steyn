@@ -5,13 +5,19 @@ import PlaylistCreate from '../components/playlist/PlaylistCreate'
 import ProfilePreview from '../components/profile/ProfilePreview'
 
 class CreatePlaylist extends React.Component{
+    
+    constructor(props){
+        super(props);
+        this.playlists = ["1", "2", "3", "4", "5"];
+    }
+
     render(){
         return(
             <div>
                 <ProfilePreview />
                 <div className="entry_content">
                     <div className="navBar">
-                            <Navbar />
+                            <Navbar playlists={this.playlists}/>
                     </div>
                     <div className="main_content">
                         <PlaylistCreate />

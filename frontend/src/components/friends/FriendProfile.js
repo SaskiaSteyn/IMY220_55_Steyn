@@ -18,9 +18,10 @@ class FriendProfileView extends React.Component{
                 <p><strong>Pronouns</strong> He/him</p>
                 <p>You have <strong>2</strong> playlists in common</p>
                 <div className="playlists_in_common">
-                    <PlaylistPreview />
-                    <PlaylistPreview />   
+                    <PlaylistPreview playlistID = "15"/>
+                    <PlaylistPreview playlistID = "16"/>   
                 </div>
+                <button>Add as friend</button>
                 
             </div>
         );

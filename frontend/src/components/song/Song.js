@@ -32,8 +32,8 @@ class SingleSong extends React.Component{
                     {this.state.hidden && <AddSongToPlaylist />}
                 </div>
                 
-                <FriendPreview />
-                <FriendPreview />
+                <FriendPreview friendID="15"/>
+                <FriendPreview friendID="16"/>
             </div>
         );
     }

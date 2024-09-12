@@ -11,7 +11,7 @@ class PlaylistPreview extends React.Component{
     
     render(){
         return(
-            <Link to="/playlist" className="playlistPreview">
+            <Link to={"/playlist/" + this.props.playlistID} className="playlistPreview">
                     <p className="coverimage"><FaImage /></p>
                     <p><strong>Playlist name</strong></p>
                     <FaPlay />

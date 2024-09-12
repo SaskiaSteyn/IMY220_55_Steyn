@@ -16,7 +16,7 @@ class AddCommentGeneral extends React.Component {
             <div>
                 <form>
                     <label>Add a comment</label><br/>
-                    <textarea rows="4" cols="86"></textarea>
+                    <textarea rows="4" cols="100"></textarea>
                     <div className="add_comment_btns">
                         <button onClick={this.addComment}>Send reply</button>
                         <button onClick={this.addComment}>Discard</button>
