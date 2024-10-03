@@ -14,31 +14,13 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: "babel-loader",
-                },
+                    loader: "babel-loader"
+                }
             },
             {
                 test: /\.css$/,
-                exclude: /node_modules/,
-                use: [
-                    "style-loader",
-                    "css-loader", 
-                ],
-            },
-            {
-                test: /\.(png|jpe?g|gif|ico|svg)$/,
-                include: path.resolve(__dirname, "frontend/public/assets"), 
-                use: [
-                    {
-                        loader: "file-loader",
-                        options: {
-                            name: "[name].[hash].[ext]", 
-                            outputPath: "assets/", 
-                            publicPath: "/assets/", 
-                        },
-                    },
-                ],
-            },
-        ],
+                use: ['style-loader', 'css-loader', 'postcss-loader']
+            }
+        ]
     },
 };

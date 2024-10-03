@@ -20,10 +20,13 @@ class Login extends React.Component {
     login(event) {
         event.preventDefault();
         if (this.state.isFormValid) {
+            //TODO: google when awake
             this.props.updateValue({
                 username: this.state.username,
                 password: this.state.password
             });
+
+            //api call to login
         }
     }
 
@@ -64,7 +67,7 @@ class Login extends React.Component {
         const { username, password, isFormValid, usernameError, passwordError } = this.state;
 
         return (
-            <div className="login_box">
+            <div className="login">
                 <h2>Login</h2>
 
                 <form onSubmit={this.login}>
@@ -79,7 +82,7 @@ class Login extends React.Component {
                         onBlur={this.handleBlur}
                         required
                     />
-                    {usernameError && <p style={{ color: 'red' }}>{usernameError}</p>}<br /><br />
+                    {usernameError && <p style={{ color: 'white' }}>{usernameError}</p>}<br /><br />
 
                     <label>Password</label><br />
                     <input 
@@ -92,7 +95,7 @@ class Login extends React.Component {
                         onBlur={this.handleBlur}
                         required
                     />
-                    {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}<br /><br />
+                    {passwordError && <p style={{ color: 'white' }}>{passwordError}</p>}<br /><br />
 
                     <Link to={isFormValid ? "/" : "#"}><button type="submit" disabled={!isFormValid}>
                         Login

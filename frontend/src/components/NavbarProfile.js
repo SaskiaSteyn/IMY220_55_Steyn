@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom'
 class NavbarProfile extends React.Component{
     render(){
         return(
-            <nav>
+            <nav className="settings_nav">
                 <Link to="/">Home</Link>
                 <hr/>
                 <Link to="/profile">Profile Settings</Link>
-                <Link to="/personalplaylists">Playlists</Link>
+                {/* <Link to="/personalplaylists">Playlists</Link> */}
                 <Link to="/friends">Friends</Link>
                 <Link to="/login">Logout</Link>
             </nav>

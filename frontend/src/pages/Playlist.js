@@ -9,7 +9,44 @@ class Playlist extends React.Component{
 
     constructor(props){
         super(props);
-        this.playlists = ["1", "2", "3", "4", "5"];
+        this.state = {
+            playlists: [],
+            playlistPreviews : []
+        }
+        this.fetchPlaylists = this.fetchPlaylists.bind(this);
+    }
+
+    componentDidMount(){
+        //fetch call 
+        this.fetchPlaylists();
+    }
+
+    async fetchPlaylists(){
+        try {
+            const response = await fetch('http://localhost:3001/playlists', {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                method: 'POST',
+                
+              });
+
+            if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+            }
+
+            const json = await response.json();
+
+            console.log(json);
+            // const playlistPreviewsTemp = this.playlistPreviewLoop(json);
+
+            this.setState({
+                playlists: json,
+                playlistPreviews: []
+            })
+        } catch (error) {
+            console.error(error.message);
+        }
     }
 
     render(){
@@ -18,7 +55,7 @@ class Playlist extends React.Component{
                 <ProfilePreview />
                 <div className="entry_content">
                     <div className="navBar">
-                            <Navbar playlists={this.playlists}/>
+                            <Navbar playlists={this.state.playlists}/>
                     </div>
                     <div className="main_content">
                         <CurrentPlaylist />

@@ -15,10 +15,12 @@ class Search extends React.Component{
     render(){
         return(
             <div className="searchBar">
-                <form onSubmit={this.search}>
-                    <input type="text" placeholder="Search your playlists"/>
-                    <button type="submit"><FaSearch /></button>
-                    </form>
+                <div className="searchBar_item">
+                    <p className="search_btn" type="submit"><FaSearch /></p>
+                </div>
+                <div className="searchBar_item">
+                    <p>Search</p>
+                </div> 
             </div>
         );
     }
