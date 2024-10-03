@@ -55,9 +55,9 @@ class PlaylistCreate extends React.Component {
                         
                     </div>
 
-                    <div>
-                        <Link to="/"><button type="button">Create Playlist</button></Link>
-                        <Link to="/"><button type="button">Cancel</button></Link>
+                    <div className="control_btns">
+                        <Link className="safe" to="/"><button type="button">Create Playlist</button></Link>
+                        <Link className="cancel" to="/"><button type="button">Cancel</button></Link>
                     </div>
                 </form>
             </div>

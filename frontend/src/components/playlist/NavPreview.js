@@ -14,11 +14,11 @@ class NavPreview extends React.Component{
             <Link to={"/playlist/" + this.props.playlistID} className="nav_playlistPreview">
                     <p className="nav_coverimage"><FaImage /></p>
                     <div >
-                        <h4><strong>Playlist name</strong></h4>
+                        <h4><strong>{this.props.playlistName}</strong></h4>
                         <div className="nav_playlistPreview_song_info">
-                            <p>200 songs</p>
+                            <p>{this.props.songCount} songs</p>
                             <p>•</p>
-                            <p>10 hours</p>
+                            <p>{this.props.duration} hours</p>
                         </div>
                     </div>
                     

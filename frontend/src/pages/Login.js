@@ -5,7 +5,10 @@ class LoginPage extends React.Component{
     render(){
         return(
             <div className="login_page">
-                <Login />
+                <div className="login_box">
+                    <Login />
+                </div>
+               
             </div>
         );
     }

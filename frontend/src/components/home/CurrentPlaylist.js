@@ -1,11 +1,65 @@
 import React from 'react'
 import { FaImage } from "react-icons/fa6"
+import { useParams } from 'react-router-dom'
 import FriendPreview from '../friends/FriendPreview'
+
+
+export function withRouter(Children){
+    return(props)=>{
+
+       const match  = {params: useParams()};
+       return <CurrentPlaylist {...props}  match = {match}/>
+   }
+ }
 
 class CurrentPlaylist extends React.Component{
     
     constructor(props){
         super(props);
+        this.state = {
+            playlistName: '',
+            owner: '',
+            songCount: 0,
+            totalTime: ''
+        };
+    }
+
+    componentDidMount(){
+        //fetch call 
+        let playlistID = this.props.match.params.playlistID;
+        if(playlistID === undefined || playlistID === null){
+            playlistID = "77f57d8834896282e8832001";
+        }
+        this.fetchPlaylist(playlistID);
+    }
+
+    async fetchPlaylist(playlistID){
+        try {
+            const response = await fetch('http://localhost:3001/playlist', {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                method: 'POST',
+                body: JSON.stringify({
+                    id: playlistID
+                }),
+              });
+
+            if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+            }
+
+            const json = await response.json();
+
+            this.setState({
+                playlistName: json.playlist_name,
+                owner: '',
+                songCount: json.songs.length,
+                totalTime: json.duration
+            })
+        } catch (error) {
+            console.error(error.message);
+        }
     }
     
     render(){
@@ -17,12 +71,12 @@ class CurrentPlaylist extends React.Component{
                         <FaImage />
                     </div>
                     <div className="playlist_details">
-                        <h3>Playlist name</h3>
-                        <p>Created by user</p>
+                        <h3>{this.state.playlistName}</h3>
+                        <p>Created by {this.state.owner}</p>
                         <div className="playlist_song_details">
-                            <p>200 songs</p>
+                            <p>{this.state.songCount} songs</p>
                             <p>•</p>
-                            <p>10 hours</p>
+                            <p>{this.state.totalTime}</p>
                         </div>
                         <div className="curr_playliist_friends">
                             <FriendPreview friendID="10"/>
@@ -30,9 +84,9 @@ class CurrentPlaylist extends React.Component{
                             <FriendPreview friendID="12"/>
                             <FriendPreview friendID="13"/>
                         </div>
-                        <div>
+                        {/* <div>
                             <p>Johan, Patterson, Rori and 1 other can edit this playlist</p>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
@@ -41,4 +95,4 @@ class CurrentPlaylist extends React.Component{
 
 }
 
-export default CurrentPlaylist
+export default withRouter(CurrentPlaylist);

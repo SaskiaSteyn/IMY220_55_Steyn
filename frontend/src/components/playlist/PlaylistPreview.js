@@ -13,7 +13,7 @@ class PlaylistPreview extends React.Component{
         return(
             <Link to={"/playlist/" + this.props.playlistID} className="playlistPreview">
                     <p className="coverimage"><FaImage /></p>
-                    <p><strong>Playlist name</strong></p>
+                    <p><strong>{this.props.playlistName}</strong></p>
                     <FaPlay />
             </Link>
         );
