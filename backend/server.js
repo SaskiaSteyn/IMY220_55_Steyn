@@ -5,7 +5,7 @@ import path from 'path'
 //CREATE APP
 const app = express();
 const {MongoClient, ObjectId} = require("mongodb");
-const url = "mongodb+srv://u17267162:5xcc2P5U5988t0Wxr@clusterexample.mnsh8.mongodb.net/?retryWrites=true&w=majority&appName=ClusterExample";
+const url = "";
 
 //SERVE A STATIC PAGE IN THE PUBLIC DIRECTORY
 app.use(express.static("frontend/public"));
