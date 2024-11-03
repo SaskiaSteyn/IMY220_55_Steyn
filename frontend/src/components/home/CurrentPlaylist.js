@@ -1,7 +1,6 @@
 import React from 'react'
 import { FaImage } from "react-icons/fa6"
 import { useParams } from 'react-router-dom'
-import FriendPreview from '../friends/FriendPreview'
 
 
 export function withRouter(Children){
@@ -35,7 +34,7 @@ class CurrentPlaylist extends React.Component{
 
     async fetchPlaylist(playlistID){
         try {
-            const response = await fetch('http://localhost:3001/playlist', {
+            const response = await fetch('http://localhost:3005/playlist', {
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -78,12 +77,12 @@ class CurrentPlaylist extends React.Component{
                             <p>•</p>
                             <p>{this.state.totalTime}</p>
                         </div>
-                        <div className="curr_playliist_friends">
+                        {/* <div className="curr_playliist_friends">
                             <FriendPreview friendID="10"/>
                             <FriendPreview friendID="11"/>
                             <FriendPreview friendID="12"/>
                             <FriendPreview friendID="13"/>
-                        </div>
+                        </div> */}
                         {/* <div>
                             <p>Johan, Patterson, Rori and 1 other can edit this playlist</p>
                         </div> */}

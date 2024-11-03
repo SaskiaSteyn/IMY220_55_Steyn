@@ -26,7 +26,7 @@
 }
 
 .header{
-  background: linear-gradient(180deg, #CA72DF 0%, #C7E6F0 172.12%);
+  background: linear-gradient(180deg, #D75A5A 0%, #FBD4D7 172.12%);
   color: #000;
 }
 
@@ -67,6 +67,14 @@
   backdrop-filter: blur(10px);
 }
 
+.comment_list{
+  padding-bottom: 10%;
+  padding-top: 5%;
+}
+
+.list_of_songs{
+  padding-bottom: 10%;
+}
 
 *, ::before, ::after {
   --tw-border-spacing-x: 0;

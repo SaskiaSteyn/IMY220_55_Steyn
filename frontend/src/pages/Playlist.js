@@ -1,72 +1,56 @@
-import React from 'react'
-import CurrentPlaylist from '../components/home/CurrentPlaylist'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import CurrentSong from '../components/home/CurrentSong'
 import Navbar from '../components/Navbar'
 import PlaylistFullView from '../components/playlist/Playlist'
 import ProfilePreview from '../components/profile/ProfilePreview'
 
-class Playlist extends React.Component{
+const Playlist = () => {
+    const [playlists, setPlaylists] = useState([]);
+    const [playlistPreviews, setPlaylistPreviews] = useState([]);
+    const userId = useSelector((state) => state.user.userId);
 
-    constructor(props){
-        super(props);
-        this.state = {
-            playlists: [],
-            playlistPreviews : []
-        }
-        this.fetchPlaylists = this.fetchPlaylists.bind(this);
-    }
 
-    componentDidMount(){
-        //fetch call 
-        this.fetchPlaylists();
-    }
+    useEffect(() => {
+        fetchPlaylists();
+    }, []);
 
-    async fetchPlaylists(){
+    const fetchPlaylists = async () => {
         try {
-            const response = await fetch('http://localhost:3001/playlists', {
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+            const response = await fetch('http://localhost:3005/playlists', {
+                headers: { 'Content-Type': 'application/json' },
                 method: 'POST',
-                
-              });
+                body: JSON.stringify({ userId }), // Directly passing the userId
+            });
 
             if (!response.ok) {
-            throw new Error(`Response status: ${response.status}`);
+                throw new Error(`Response status: ${response.status}`);
             }
 
             const json = await response.json();
-
             console.log(json);
-            // const playlistPreviewsTemp = this.playlistPreviewLoop(json);
 
-            this.setState({
-                playlists: json,
-                playlistPreviews: []
-            })
+            setPlaylists(json);
+            setPlaylistPreviews([]); // Assuming this might be populated in the future
         } catch (error) {
             console.error(error.message);
         }
-    }
+    };
 
-    render(){
-        return(
-            <div className="fullPage">
-                <ProfilePreview />
-                <div className="entry_content">
-                    <div className="navBar">
-                            <Navbar playlists={this.state.playlists}/>
-                    </div>
-                    <div className="main_content">
-                        <CurrentPlaylist />
-                        <br/>
-                        <PlaylistFullView />
-                    </div>
+    return (
+        <div className="fullPage">
+            <ProfilePreview />
+            <div className="entry_content">
+                <div className="navBar">
+                    <Navbar playlists={playlists} />
                 </div>
-                <CurrentSong />
+                <div className="main_content">
+                    <PlaylistFullView />
+                </div>
             </div>
-        );
-    }
-}
+            <CurrentSong />
+        </div>
+    );
+};
 
-export default Playlist
+export default Playlist;

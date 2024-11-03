@@ -19,17 +19,17 @@ class SingleSong extends React.Component{
     render(){
         return(
             <div className="songDiv">
-                <p>1.</p>
+                <p>{this.props.index+1}.</p>
                 <p className="coverimage_song"><FaImage /></p>
                 <div className="songDetails">
-                    <h4>Song Title</h4>
-                    <p>Artist Name</p>
+                    <h4>{this.props.song.title}</h4>
+                    <p>{this.props.song.artists[0]}</p>
                 </div>
                 
-                <p>3:45</p>
+                <p>{this.props.song.duration}</p>
                 <div className="addToPlaylistBtn">
                     <FaCirclePlus className="add_btn" onClick={this.addToPlaylist}/>
-                    {this.state.hidden && <AddSongToPlaylist />}
+                    {this.state.hidden && <AddSongToPlaylist song={this.props.song}/>}
                 </div>
                 
                 <FriendPreview friendID="15"/>
