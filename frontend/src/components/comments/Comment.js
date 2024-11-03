@@ -28,8 +28,8 @@ class SingleComment extends React.Component {
                     </div>
                     
                     <div className="comment_txt">
-                        <h4>Commenter's name</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <h4>{this.props.comment.commenter_name}</h4>
+                        <p>{this.props.comment.comment_text}</p>
                         <div className="comment_btns">
                             <FaThumbsUp />
                             <FaThumbsDown />

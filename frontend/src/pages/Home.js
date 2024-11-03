@@ -1,97 +1,118 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useLocation } from 'react-router-dom'
 import CurrentPlaylist from '../components/home/CurrentPlaylist'
 import CurrentSong from '../components/home/CurrentSong'
 import Navbar from '../components/Navbar'
 import PlaylistPreview from '../components/playlist/PlaylistPreview'
 import ProfilePreview from '../components/profile/ProfilePreview'
+import { setPlaylists } from '../store/slices/PlayListSlice'
+import { setDisplayName, setEmail, setProfilePicture, setPronouns, setUserName } from '../store/slices/UserSlice'
 
-class Home extends React.Component{
+const Home = () => {
+    const location = useLocation();
+    // const [playlists, setPlaylists] = useState([]);
+    const [userId, setUserId] = useState("");
+    const dispatch = useDispatch();
+    const playlists = useSelector((state) => state.playlists.playlists);
 
-    constructor(props){
-        super(props);
-        this.playlists = ["1", "2", "3", "4", "5"];
-        this.state = {
-            playlists: [],
-            playlistPreviews : []
+    
+
+    useEffect(() => {
+        console.log(location.state);
+
+        const userIdFromLocation = location.state?.userId; // Use optional chaining to avoid errors
+        if (userIdFromLocation) {
+            console.log("Setting userId:", userIdFromLocation);
+            setUserId(userIdFromLocation);
+            refresh(userIdFromLocation);
+            fetchPlaylists(userIdFromLocation);
         }
-        this.fetchPlaylists = this.fetchPlaylists.bind(this);
-    }
+        else{
+            fetchPlaylists(null);
+        }
+    }, [location]); // Dependencies array to run the effect when the location changes
 
-    componentDidMount(){
-        //fetch call 
-        this.fetchPlaylists();
-    }
-
-    async fetchPlaylists(){
+    const fetchPlaylists = async (userId) => {
         try {
-            const response = await fetch('http://localhost:3001/playlists', {
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+            console.log("Fetching playlists for userId:", userId);
+            const response = await fetch('http://localhost:3005/playlists', {
                 method: 'POST',
-                
-              });
-
-            if (!response.ok) {
-            throw new Error(`Response status: ${response.status}`);
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ userId }), // Directly passing the userId
+            });
+            const data = await response.json();
+            console.log("Fetched playlists:", data); // Log fetched playlists
+            console.log("Response:", response);
+            if (response.ok) {
+                console.log("Setting playlists:", data);
+                dispatch(setPlaylists(data)); // Update state with fetched playlists
+            } else {
+                console.error("Error fetching playlists:", data.message);
             }
-
-            const json = await response.json();
-
-            console.log(json);
-            // const playlistPreviewsTemp = this.playlistPreviewLoop(json);
-
-            this.setState({
-                playlists: json,
-                playlistPreviews: []
-            })
         } catch (error) {
-            console.error(error.message);
+            console.error("Error fetching playlists:", error);
         }
-    }
+    };
 
-    render(){
-        return(
-            <div className="fullPage">
-                <div className="header">
-                    <ProfilePreview />
-                    <CurrentPlaylist />
-                </div>
+    const refresh = async (userId) => {
+        console.log("Refresh called");
+            try {
+                const response = await fetch('http://localhost:3005/refresh', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        userId: userId,
+                    }),
+                });
+                const data = await response.json();
                 
-                <div className="entry_content">
-                    <div className="navBar">
-                        <Navbar playlists={this.state.playlists}/>
+                if (data.success) {
+                    localStorage.setItem('userId', data.user._id);
+                    dispatch(setUserName(data.user.username));
+                    dispatch(setDisplayName(data.user.displayname));
+                    dispatch(setPronouns(data.user.pronouns));
+                    dispatch(setEmail(data.user.email));
+                    dispatch(setProfilePicture(data.user.profilePicture));
+                } else {
+                    // Set login error message
+                }
+            } catch (error) {
+                console.error("Error logging in:", error);
+            }
+    };
+
+    return (
+        <div className="fullPage">
+            <div className="header">
+                <ProfilePreview />
+                <CurrentPlaylist />
+            </div>
+
+            <div className="entry_content">
+                <div className="navBar">
+                    <Navbar playlists={playlists} />
+                </div>
+                <div className="main_content">
+                    <div className="main_heading">
+                        <h2>Your recent listens</h2>
                     </div>
-                    <div className="main_content">
-                        <div className="main_heading">
-                            <h2>Your recent listens</h2>
-                        </div>
-                        {this.state.playlists.length > 0 && 
-                            <div className="playlist_list">
-                                <PlaylistPreview playlistID = {this.state.playlists[0]._id} playlistName = {this.state.playlists[0].playlist_name}/>
-                                <PlaylistPreview playlistID = {this.state.playlists[1]._id} playlistName = {this.state.playlists[1].playlist_name}/>
-                            </div>
-                        }
-                        {this.state.playlists.length > 0 && 
-                            <div className="playlist_list">
-                                <PlaylistPreview playlistID = {this.state.playlists[2]._id} playlistName = {this.state.playlists[2].playlist_name}/>
-                                <PlaylistPreview playlistID = {this.state.playlists[3]._id} playlistName = {this.state.playlists[3].playlist_name}/>
-                            </div>
-                        }
-                        {/* <div className="playlist_list">
-                            <PlaylistPreview playlistID = "1"/>
-                            <PlaylistPreview playlistID = "2"/>
-                        </div>
-                        <div className="playlist_list">
-                            <PlaylistPreview playlistID = "3"/>
-                            <PlaylistPreview playlistID = "4"/>
-                        </div> */}
+                    <div className="playlist_list">
+                        {playlists.map((playlist) => (
+                            <PlaylistPreview
+                                key={playlist._id}
+                                playlistID={playlist._id}
+                                playlistName={playlist.playlist_name}
+                            />
+                        ))}
                     </div>
                 </div>
-                <CurrentSong />
             </div>
-        );
-    }
-}
+            <CurrentSong />
+        </div>
+    );
+};
 
-export default Home
+export default Home;

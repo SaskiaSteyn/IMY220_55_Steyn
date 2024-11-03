@@ -24,14 +24,14 @@ class DeleteSong extends React.Component {
     render() {
         return (
             <div className="songDiv">
-                <p>1.</p>
+                <p>{this.props.index+1}.</p>
                 <p className="coverimage_song"><FaImage /></p>
                 <div className="songDetails">
-                    <h4>Song Title</h4>
-                    <p>Artist Name</p>
+                    <h4>{this.props.song.title}</h4>
+                    <p>{this.props.song.artists[0]}</p>
                 </div>
                 
-                <p>3:45</p>
+                <p>{this.props.song.duration}</p>
                 <div className="deleteSongBtn">
                     <FaTrashCan className="delete_btn" onClick={this.toggleDeleteConfirmation}/>
                     {this.state.showConfirmation && (
@@ -50,4 +50,4 @@ class DeleteSong extends React.Component {
     }
 }
 
-export default DeleteSong;
+export default DeleteSong

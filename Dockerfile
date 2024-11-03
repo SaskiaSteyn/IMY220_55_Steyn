@@ -6,10 +6,10 @@ WORKDIR /u17267162
 
 COPY . . 
 
-ENV PORT 3001
+ENV PORT=3005
 
 RUN npm install
 
 CMD ["npm", "start"]
 
-EXPOSE 3001
+EXPOSE 3005

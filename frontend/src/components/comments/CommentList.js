@@ -11,17 +11,11 @@ class CommentList extends React.Component{
     render(){
         return(
                 <div className="comment_list">
-                    <hr/>
-                    <h3>10 Comments</h3>
+                    <h3>{this.props.comments.length} Comment&#40;s&#41;</h3>
                     <AddCommentGeneral />
-                    <SingleComment />
-                    <SingleComment />
-                    <SingleComment />
-                    <SingleComment />
-                    <SingleComment />
-                    <SingleComment />
-                    <SingleComment />
-                    <SingleComment />
+                    {this.props.comments.map((comment, index) => (
+                    <SingleComment key={index} comment={comment} />
+                    ))}
                 </div>
         );
     }
