@@ -3,7 +3,7 @@ import { MongoClient, ObjectId } from 'mongodb'
 import path from 'path'
 
 // Database URL and client setup
-const url = ;
+const url = 'mongodb+srv://u17267162:5xcc2P5U5988t0Wxr@clusterexample.mnsh8.mongodb.net/?retryWrites=true&w=majority&appName=ClusterExample';
 const client = new MongoClient(url);
 
 // Create the Express app
