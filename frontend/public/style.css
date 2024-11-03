@@ -187,27 +187,26 @@ nav{
   border: solid 1px #ccc;
 }
 
-.playlistPreview{
+.playlist_list {
+  display: flex;
+  flex-wrap: wrap;            /* Wraps items to the next row */
+  gap: 1rem;                  /* Optional: adds spacing between items */
+}
+
+.playlistPreview {
   border-radius: 10px;
   border: 2px solid #FFF;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  width: 100%;
+  flex: 1 1 calc(50% - 2rem); /* Takes up 50% minus gap space */
+  max-width: calc(50% - 2rem);/* Ensures no item exceeds 50% width */
   box-sizing: border-box;
-  margin: 2%;
   padding: 1%;
 }
 
-.playlistPreview p{
-  margin: 1%;
-}
 
-.playlist_list{
-  display: flex;
-  flex-direction: row;
-}
 
 .songs{
   margin: 1% 0%;
@@ -267,12 +266,36 @@ nav{
   border-radius: 100px;
 }
 
-.playlist_name{
+.playlist_name {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;                   /* Optional: Adds space between items */
 }
+
+.playlist_edit_btns {
+  display: flex;
+  gap: 0.5rem;                 /* Adds spacing between the buttons */
+  flex-grow: 1;                /* Allows this section to take up remaining space */
+  justify-content: flex-end;   /* Aligns buttons to the right within this section */
+}
+
+button.cancel, button.safe {
+  padding: 0.5rem 1rem;        /* Adjusts button padding */
+  font-size: 0.9rem;           /* Adjusts font size for buttons */
+}
+
+.playlist_name input {
+  border-radius: 30px;
+  border: 2px solid #959494;
+  background: #393737;
+  width: 300px;
+  padding: 2.5%;           /* Use padding to control inner spacing */
+  color: #FFF;             /* Text color to ensure contrast on dark background */
+  box-sizing: border-box;  /* Ensures padding doesn’t affect overall width */
+}
+
+
 
 .friend_icon{
   width: 30px;
@@ -480,7 +503,6 @@ nav{
 .known_friends{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
 }
 
 .friend_card{

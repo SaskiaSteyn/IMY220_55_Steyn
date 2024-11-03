@@ -17,8 +17,8 @@ class DeleteSong extends React.Component {
 
     deleteSong() {
         // Logic to delete the song goes here
-        console.log("Song deleted");
         this.setState({ showConfirmation: false });
+        this.props.removeSong(this.props.index);
     }
     
     render() {

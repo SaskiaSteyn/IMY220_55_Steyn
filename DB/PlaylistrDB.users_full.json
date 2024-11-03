@@ -1,0 +1,354 @@
+[{
+  "_id": {
+    "$oid": "88f67e9934896282e8833001"
+  },
+  "displayname": "Alex Johnson",
+  "email": "alex.johnson@example.com",
+  "playlists": [
+    {
+      "_id": {
+        "$oid": "77f57d8834896282e8832001"
+      },
+      "playlist_name": "Chill Vibes",
+      "duration": 615,
+      "songs": [
+        {
+          "$oid": "66f57c7734896282e8831923"
+        },
+        {
+          "$oid": "66f57c7734896282e8831924"
+        },
+        {
+          "$oid": "66f57c7734896282e8831926"
+        }
+      ],
+      "songsObjects": [
+        {
+          "_id": {
+            "$oid": "66f57c7734896282e8831923"
+          },
+          "title": "Midnight Dreams",
+          "artists": [
+            "The Nightwalkers"
+          ],
+          "album": "Moonlit Serenade",
+          "duration": 200
+        },
+        {
+          "_id": {
+            "$oid": "66f57c7734896282e8831924"
+          },
+          "title": "Echoes of Time",
+          "artists": [
+            "Aurora Skies"
+          ],
+          "album": "Timeless Journey",
+          "duration": 180
+        },
+        {
+          "_id": {
+            "$oid": "66f57c7734896282e8831926"
+          },
+          "title": "Golden Horizon",
+          "artists": [
+            "Sunset Reverie"
+          ],
+          "album": "Skyline Visions",
+          "duration": 195
+        }
+      ]
+    }
+  ],
+  "pronouns": "they/them",
+  "username": "NightWalker21",
+  "password": ""
+},
+{
+  "_id": {
+    "$oid": "88f67e9934896282e8833003"
+  },
+  "displayname": "Samantha Davis",
+  "email": "samantha.davis@example.com",
+  "playlists": [
+    {
+      "_id": {
+        "$oid": "77f57d8834896282e8832002"
+      },
+      "playlist_name": "Epic Journeys",
+      "duration": 685,
+      "songs": [
+        {
+          "$oid": "66f57c7734896282e8831925"
+        },
+        {
+          "$oid": "66f57c7734896282e8831927"
+        },
+        {
+          "$oid": "66f57c7734896282e8831929"
+        }
+      ],
+      "songsObjects": [
+        {
+          "_id": {
+            "$oid": "66f57c7734896282e8831925"
+          },
+          "title": "Waves of Emotion",
+          "artists": [
+            "Ocean's Call"
+          ],
+          "album": "Tides of Love",
+          "duration": 240
+        },
+        {
+          "_id": {
+            "$oid": "66f57c7734896282e8831927"
+          },
+          "title": "Crystal Clear",
+          "artists": [
+            "Glass Heart"
+          ],
+          "album": "Shattered Reflections",
+          "duration": 215
+        },
+        {
+          "_id": {
+            "$oid": "66f57c7734896282e8831929"
+          },
+          "title": "Whispers in the Dark",
+          "artists": [
+            "Shadow's Embrace"
+          ],
+          "album": "Nocturnal Tales",
+          "duration": 205
+        }
+      ]
+    },
+    {
+      "_id": {
+        "$oid": "77f57d8834896282e8832003"
+      },
+      "playlist_name": "Morning Tunes",
+      "duration": 630,
+      "songs": [
+        {
+          "$oid": "66f57c7734896282e8831930"
+        },
+        {
+          "$oid": "66f57c7734896282e8831931"
+        },
+        {
+          "$oid": "66f57c7734896282e8831928"
+        }
+      ],
+      "songsObjects": [
+        {
+          "_id": {
+            "$oid": "66f57c7734896282e8831928"
+          },
+          "title": "Northern Lights",
+          "artists": [
+            "Polar Winds"
+          ],
+          "album": "Arctic Dreams",
+          "duration": 175
+        },
+        {
+          "_id": {
+            "$oid": "66f57c7734896282e8831930"
+          },
+          "title": "Rise of the Dawn",
+          "artists": [
+            "Daybreak Echo"
+          ],
+          "album": "Morning Glory",
+          "duration": 220
+        },
+        {
+          "_id": {
+            "$oid": "66f57c7734896282e8831931"
+          },
+          "title": "Dancing in the Rain",
+          "artists": [
+            "Storm Chasers"
+          ],
+          "album": "Thunderstruck",
+          "duration": 230
+        }
+      ]
+    }
+  ],
+  "pronouns": "she/her",
+  "username": "SunshineSami",
+  "password": ""
+},
+{
+  "_id": {
+    "$oid": "88f67e9934896282e8833002"
+  },
+  "displayname": "Jordan Lee",
+  "email": "jordan.lee@example.com",
+  "playlists": [
+    {
+      "_id": {
+        "$oid": "77f57d8834896282e8832001"
+      },
+      "playlist_name": "Chill Vibes",
+      "duration": 615,
+      "songs": [
+        {
+          "$oid": "66f57c7734896282e8831923"
+        },
+        {
+          "$oid": "66f57c7734896282e8831924"
+        },
+        {
+          "$oid": "66f57c7734896282e8831926"
+        }
+      ],
+      "songsObjects": [
+        {
+          "_id": {
+            "$oid": "66f57c7734896282e8831923"
+          },
+          "title": "Midnight Dreams",
+          "artists": [
+            "The Nightwalkers"
+          ],
+          "album": "Moonlit Serenade",
+          "duration": 200
+        },
+        {
+          "_id": {
+            "$oid": "66f57c7734896282e8831924"
+          },
+          "title": "Echoes of Time",
+          "artists": [
+            "Aurora Skies"
+          ],
+          "album": "Timeless Journey",
+          "duration": 180
+        },
+        {
+          "_id": {
+            "$oid": "66f57c7734896282e8831926"
+          },
+          "title": "Golden Horizon",
+          "artists": [
+            "Sunset Reverie"
+          ],
+          "album": "Skyline Visions",
+          "duration": 195
+        }
+      ]
+    },
+    {
+      "_id": {
+        "$oid": "77f57d8834896282e8832002"
+      },
+      "playlist_name": "Epic Journeys",
+      "duration": 685,
+      "songs": [
+        {
+          "$oid": "66f57c7734896282e8831925"
+        },
+        {
+          "$oid": "66f57c7734896282e8831927"
+        },
+        {
+          "$oid": "66f57c7734896282e8831929"
+        }
+      ],
+      "songsObjects": [
+        {
+          "_id": {
+            "$oid": "66f57c7734896282e8831925"
+          },
+          "title": "Waves of Emotion",
+          "artists": [
+            "Ocean's Call"
+          ],
+          "album": "Tides of Love",
+          "duration": 240
+        },
+        {
+          "_id": {
+            "$oid": "66f57c7734896282e8831927"
+          },
+          "title": "Crystal Clear",
+          "artists": [
+            "Glass Heart"
+          ],
+          "album": "Shattered Reflections",
+          "duration": 215
+        },
+        {
+          "_id": {
+            "$oid": "66f57c7734896282e8831929"
+          },
+          "title": "Whispers in the Dark",
+          "artists": [
+            "Shadow's Embrace"
+          ],
+          "album": "Nocturnal Tales",
+          "duration": 205
+        }
+      ]
+    },
+    {
+      "_id": {
+        "$oid": "77f57d8834896282e8832003"
+      },
+      "playlist_name": "Morning Tunes",
+      "duration": 630,
+      "songs": [
+        {
+          "$oid": "66f57c7734896282e8831930"
+        },
+        {
+          "$oid": "66f57c7734896282e8831931"
+        },
+        {
+          "$oid": "66f57c7734896282e8831928"
+        }
+      ],
+      "songsObjects": [
+        {
+          "_id": {
+            "$oid": "66f57c7734896282e8831928"
+          },
+          "title": "Northern Lights",
+          "artists": [
+            "Polar Winds"
+          ],
+          "album": "Arctic Dreams",
+          "duration": 175
+        },
+        {
+          "_id": {
+            "$oid": "66f57c7734896282e8831930"
+          },
+          "title": "Rise of the Dawn",
+          "artists": [
+            "Daybreak Echo"
+          ],
+          "album": "Morning Glory",
+          "duration": 220
+        },
+        {
+          "_id": {
+            "$oid": "66f57c7734896282e8831931"
+          },
+          "title": "Dancing in the Rain",
+          "artists": [
+            "Storm Chasers"
+          ],
+          "album": "Thunderstruck",
+          "duration": 230
+        }
+      ]
+    }
+  ],
+  "pronouns": "he/him",
+  "username": "JLeePro",
+  "password": ""
+}]

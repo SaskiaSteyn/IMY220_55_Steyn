@@ -29,7 +29,6 @@ const AddSong = () => {
             }
 
             const json = await response.json();
-            console.log(json);
 
             setPlaylists(json);
             setPlaylistPreviews([]); // Assuming this might be populated in the future

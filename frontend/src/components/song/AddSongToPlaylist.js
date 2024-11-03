@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
 
-const AddSongToPlaylist = ({song}) => {
+const AddSongToPlaylist = ({song, hideOnClick}) => {
     const [playlist, setPlaylist] = useState([]);
     
     useEffect(() => {
         // Fetch playlist data based on playlistID
         const fetchPlaylists = async (userId) => {
             try {
-                console.log("Fetching playlists for userId:", userId);
                 const response = await fetch('http://localhost:3005/playlists', {
                     method: 'POST',
                     headers: {
@@ -16,10 +15,7 @@ const AddSongToPlaylist = ({song}) => {
                     body: JSON.stringify({ userId }), // Directly passing the userId
                 });
                 const data = await response.json();
-                console.log("Fetched playlists:", data); // Log fetched playlists
-                console.log("Response:", response);
                 if (response.ok) {
-                    console.log("Setting playlists:", data);
                     setPlaylist(data); // Update state with fetched playlists
                 } else {
                     console.error("Error fetching playlists:", data.message);
@@ -47,7 +43,7 @@ const AddSongToPlaylist = ({song}) => {
                 }),
             });
             const data = await response.json();
-            console.log(data);
+            hideOnClick();
         } catch (error) {
             console.error("Error adding song to playlist:", error);
         }   

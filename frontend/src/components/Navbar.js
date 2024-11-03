@@ -11,6 +11,7 @@ const Navbar = ({ playlists }) => {
     const dispatch = useDispatch();
     const logout = () => {
         // Clear the user state
+        localStorage.clear();
         dispatch(setUserName(""));
         dispatch(setDisplayName(""));
         dispatch(setPronouns(""));
@@ -37,10 +38,10 @@ const Navbar = ({ playlists }) => {
                             <Link to="/">Logout</Link>
                         </div>
                     }                   
-                    <div className="nav_item">
+                    { userName !== "" && <div className="nav_item">
                         <Link to="/createplaylist"><FaCirclePlus /></Link>
                         <Link to="/createplaylist">Create new</Link>
-                    </div>
+                    </div>}
                 </div>
                 <Search />
             </div>

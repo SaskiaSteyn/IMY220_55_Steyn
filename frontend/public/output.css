@@ -76,6 +76,33 @@
   padding-bottom: 10%;
 }
 
+.deleteConfirmation{
+  background-color: #1E1E1E;
+}
+
+.addToPlaylist{
+  background-color: #1E1E1E;
+}
+
+textarea {
+  border-radius: 2px;
+  border: 2px solid #959494;
+  background: #393737;
+  color: #FFF;  /* Text color for contrast */
+}
+
+.create_new_playlist input[type="file"],
+.create_new_playlist input[type="text"] {
+  border-radius: 30px;
+  border: 2px solid #959494;
+  background: #393737;
+  color: #FFF;                /* White text for readability */
+  width: 300px;               /* Matching width */
+  padding: 1%;              /* Padding for inner spacing */
+  box-sizing: border-box;     /* Ensures padding doesn’t affect overall width */
+}
+
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -600,7 +627,7 @@ Set the default cursor for buttons.
 .safe{
   border-radius: 30px;
   background: #C96567;
-  padding: 3%;
+  padding: 3% 7%;
   margin: 2%;
   color: #fff;
 }
@@ -629,6 +656,21 @@ Set the default cursor for buttons.
   background-color: #9D5A63;
   color: #fff;
 }
+
+.cancel a{
+  color: #393737;
+}
+
+.editing_own_profile input {
+  border-radius: 30px;
+  border: 2px solid #959494;
+  background: #393737;
+  color: #FFF;              
+  width: 300px;            
+  padding: 1%;        
+  box-sizing: border-box;
+}
+
 
 button,
 [role="button"] {

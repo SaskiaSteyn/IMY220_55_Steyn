@@ -3,8 +3,10 @@ import { FaCirclePlus, FaPen, FaPlay, FaRepeat, FaShuffle } from "react-icons/fa
 import { Link, useParams } from 'react-router-dom'
 import CommentList from '../comments/CommentList'
 import SingleSong from '../song/Song'
+import { useSelector } from 'react-redux'
 
 const PlaylistFullView = () => {
+    const userId = useSelector((state) => state.user.userId);
     const { playlistID } = useParams(); // Use useParams to access the playlist ID from the URL
     const [playlist, setPlaylist] = useState(null);
     const [songs, setSongs] = useState([]);
@@ -20,7 +22,6 @@ const PlaylistFullView = () => {
                 });
                 const playlistData = await response.json();
                 setPlaylist(playlistData);
-                console.log(playlistData.songs);
                 setSongs(playlistData.songs.sort((a,b) => new Date(a.timestamp_added) - new Date(b.timestamp_added)) || []);
             } catch (error) {
                 console.error("Error fetching playlist data:", error);
@@ -37,8 +38,9 @@ const PlaylistFullView = () => {
                 <FaPlay />
                 <FaShuffle />
                 <FaRepeat />
-                <Link to="/addsong"><FaCirclePlus /></Link>
-                <Link to={`/editplaylist/${playlistID}`}><FaPen /></Link>
+                {userId !== '' && <Link to="/addsong"><FaCirclePlus /></Link>}
+                {userId !== '' && <Link to={`/editplaylist/${playlistID}`}><FaPen /></Link>}
+                
             </div>
             <div className="playlist_header">
                 <p>Number</p>
