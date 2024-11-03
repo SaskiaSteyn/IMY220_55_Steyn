@@ -1,0 +1,64 @@
+[{
+  "_id": {
+    "$oid": "88f67e9934896282e8833001"
+  },
+  "username": "NightWalker21",
+  "displayname": "Alex Johnson",
+  "pronouns": "they/them",
+  "email": "alex.johnson@example.com",
+  "playlists": [
+    {
+      "$oid": "77f57d8834896282e8832001"
+    }
+  ],
+  "password": "secureNight21!",
+  "profilePicture": ""
+},
+{
+  "_id": {
+    "$oid": "88f67e9934896282e8833002"
+  },
+  "username": "JLeePro",
+  "displayname": "Jordan Lee Pro",
+  "pronouns": "he/him",
+  "email": "jordan.lee@example.com",
+  "playlists": [
+    {
+      "$oid": "77f57d8834896282e8832001"
+    },
+    {
+      "$oid": "77f57d8834896282e8832002"
+    },
+    {
+      "$oid": "77f57d8834896282e8832003"
+    }
+  ],
+  "password": "jordanLee2021#",
+  "profilePicture": "",
+  "display_name": "Jordan Lee Probass Fishing",
+  "profile_picture": "",
+  "friends": [
+    {
+      "$oid": "88f67e9934896282e8833001"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "88f67e9934896282e8833003"
+  },
+  "username": "SunshineSami",
+  "displayname": "Samantha Davis",
+  "pronouns": "she/her",
+  "email": "samantha.davis@example.com",
+  "playlists": [
+    {
+      "$oid": "77f57d8834896282e8832002"
+    },
+    {
+      "$oid": "77f57d8834896282e8832003"
+    }
+  ],
+  "password": "samanthaSunshine@23",
+  "profilePicture": ""
+}]

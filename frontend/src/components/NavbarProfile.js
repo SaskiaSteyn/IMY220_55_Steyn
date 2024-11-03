@@ -8,6 +8,7 @@ const NavbarProfile = () => {
     const dispatch = useDispatch();
     const logout = () => {
         // Clear the user state
+        localStorage.clear();
         dispatch(setUserName(""));
         dispatch(setDisplayName(""));
         dispatch(setPronouns(""));

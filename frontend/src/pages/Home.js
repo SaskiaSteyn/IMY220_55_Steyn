@@ -19,13 +19,11 @@ const Home = () => {
     
 
     useEffect(() => {
-        console.log(location.state);
 
         const userIdFromLocation = location.state?.userId; // Use optional chaining to avoid errors
         if (userIdFromLocation) {
-            console.log("Setting userId:", userIdFromLocation);
             setUserId(userIdFromLocation);
-            refresh(userIdFromLocation);
+            // refresh(userIdFromLocation);
             fetchPlaylists(userIdFromLocation);
         }
         else{
@@ -35,7 +33,6 @@ const Home = () => {
 
     const fetchPlaylists = async (userId) => {
         try {
-            console.log("Fetching playlists for userId:", userId);
             const response = await fetch('http://localhost:3005/playlists', {
                 method: 'POST',
                 headers: {
@@ -44,10 +41,7 @@ const Home = () => {
                 body: JSON.stringify({ userId }), // Directly passing the userId
             });
             const data = await response.json();
-            console.log("Fetched playlists:", data); // Log fetched playlists
-            console.log("Response:", response);
             if (response.ok) {
-                console.log("Setting playlists:", data);
                 dispatch(setPlaylists(data)); // Update state with fetched playlists
             } else {
                 console.error("Error fetching playlists:", data.message);
@@ -55,33 +49,6 @@ const Home = () => {
         } catch (error) {
             console.error("Error fetching playlists:", error);
         }
-    };
-
-    const refresh = async (userId) => {
-        console.log("Refresh called");
-            try {
-                const response = await fetch('http://localhost:3005/refresh', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        userId: userId,
-                    }),
-                });
-                const data = await response.json();
-                
-                if (data.success) {
-                    localStorage.setItem('userId', data.user._id);
-                    dispatch(setUserName(data.user.username));
-                    dispatch(setDisplayName(data.user.displayname));
-                    dispatch(setPronouns(data.user.pronouns));
-                    dispatch(setEmail(data.user.email));
-                    dispatch(setProfilePicture(data.user.profilePicture));
-                } else {
-                    // Set login error message
-                }
-            } catch (error) {
-                console.error("Error logging in:", error);
-            }
     };
 
     return (

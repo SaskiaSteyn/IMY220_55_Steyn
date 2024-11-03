@@ -16,10 +16,10 @@ class AddCommentGeneral extends React.Component {
             <div>
                 <form>
                     <label>Add a comment</label><br/>
-                    <textarea rows="4" cols="100"></textarea>
+                    <textarea className="comment_gen" rows="4" cols="100"></textarea>
                     <div className="add_comment_btns">
-                        <button onClick={this.addComment}>Send reply</button>
-                        <button onClick={this.addComment}>Discard</button>
+                        <button className="safe" onClick={this.addComment}>Send reply</button>
+                        <button className="cancel" onClick={this.addComment}>Discard</button>
                     </div>
                 </form>
             </div>

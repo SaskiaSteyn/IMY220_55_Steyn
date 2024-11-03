@@ -1,29 +1,29 @@
-import React from 'react'
-import { FaUser } from "react-icons/fa6"
-import { Link } from 'react-router-dom'
-// import profileImage from '../../../public/assets/ImageProfile.png';
+import React from 'react';
+import { FaUser } from "react-icons/fa6";
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-class StaticProfile extends React.Component{
-    
-    constructor(props){
-        super(props);
-    }
-    
-    render(){
-        return(
-            <div>
-                <h2>Profile Page</h2>
-                <FaUser />
-                <p><strong>Username</strong> @AlejandroG</p>
-                <p><strong>Display Name</strong> Alejandro García</p>
-                <p><strong>Pronouns</strong> He/him</p>
-                <p><strong>Email</strong> AlejandroG@email.com</p>
+const StaticProfile = () => {
 
-                <button><Link to="/editprofile">Edit profile</Link></button>
-            </div>
-        );
-    }
+    const { userId,
+        userName,
+        displayName,
+        pronouns,
+        email,
+        profilePicture } = useSelector((state) => state.user);
 
-}
+    return (
+        <div>
+            <h2>Profile Page</h2>
+            <FaUser />
+            <p><strong>Username</strong> {userName}</p>
+            <p><strong>Display Name</strong> {displayName}</p>
+            <p><strong>Pronouns</strong> {pronouns}</p>
+            <p><strong>Email</strong> {email}</p>
 
-export default StaticProfile
+            <button className="safe"><Link to="/editprofile">Edit profile</Link></button>
+        </div>
+    );
+};
+
+export default StaticProfile;

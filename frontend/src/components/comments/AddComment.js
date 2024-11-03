@@ -13,8 +13,8 @@ class AddComment extends React.Component {
                     <label>Add a comment</label><br/>
                     <textarea rows="4" cols="88"></textarea>
                     <div className="add_comment_btns">
-                        <button type="button" onClick={this.props.onClose}>Send reply</button>
-                        <button type="button" onClick={this.props.onClose}>Discard</button>
+                        <button className="safe" type="button" onClick={this.props.onClose}>Send reply</button>
+                        <button className="cancel" type="button" onClick={this.props.onClose}>Discard</button>
                     </div>
                 </form>
             </div>

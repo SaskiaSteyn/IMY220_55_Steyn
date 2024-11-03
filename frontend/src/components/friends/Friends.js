@@ -1,33 +1,25 @@
-import React from 'react'
-import { FaUser } from "react-icons/fa6"
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { FaUser } from "react-icons/fa6";
+import { Link } from 'react-router-dom';
 
-
-class SingleFriend extends React.Component{
-    
-    constructor(props){
-        super(props);
-    }
-    
-    render(){
-        return(
-            <div>
-                <div className="friend_card">
-                    <div className="friend_profile">
-                        <FaUser />
-                    </div>
-                    <div className="friend_name">
-                        <h4>Santa Clause</h4>
-                    </div>
-                    <div>
-                        <Link to={"/friendprofile/" + this.props.friendID}><button>View profile</button></Link>
-                    </div>
+const SingleFriend = ({ friend }) => {
+    return (
+        <div>
+            <div className="friend_card">
+                <div className="friend_profile">
+                    <FaUser />
                 </div>
-                
+                <div className="friend_name">
+                    <h4>{friend.displayname}</h4>
+                </div>
+                <div>
+                    <Link to={`/friendprofile/${friend._id}`}>
+                        <button>View profile</button>
+                    </Link>
+                </div>
             </div>
-        );
-    }
+        </div>
+    );
+};
 
-}
-
-export default SingleFriend
+export default SingleFriend;

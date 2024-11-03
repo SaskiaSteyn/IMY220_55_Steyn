@@ -1,0 +1,199 @@
+[{
+  "_id": {
+    "$oid": "77f57d8834896282e8832001"
+  },
+  "playlist_name": "Chill Vibes",
+  "duration": 615,
+  "songs": [
+    {
+      "_id": "66f57c7734896282e8831924",
+      "title": "Echoes of Time",
+      "artists": [
+        "Aurora Skies"
+      ],
+      "album": "Timeless Journey",
+      "duration": 180,
+      "timestamp_added": "2024-11-02T16:44:04.474Z"
+    },
+    {
+      "_id": "66f57c7734896282e8831926",
+      "title": "Golden Horizon",
+      "artists": [
+        "Sunset Reverie"
+      ],
+      "album": "Skyline Visions",
+      "duration": 195,
+      "timestamp_added": "2024-11-02T16:44:09.446Z"
+    },
+    {
+      "_id": "66f57c7734896282e8831930",
+      "title": "Rise of the Dawn",
+      "artists": [
+        "Daybreak Echo"
+      ],
+      "album": "Morning Glory",
+      "duration": 220,
+      "timestamp_added": "2024-11-02T16:44:22.723Z"
+    },
+    {
+      "_id": "66f57c7734896282e8831928",
+      "title": "Northern Lights",
+      "artists": [
+        "Polar Winds"
+      ],
+      "album": "Arctic Dreams",
+      "duration": 175,
+      "timestamp_added": "2024-11-02T16:46:23.072Z"
+    }
+  ],
+  "picture": "",
+  "comments": [
+    {
+      "commenter_name": "Alex",
+      "comment_text": "Perfect playlist for winding down after a long day!",
+      "timestamp": ""
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "77f57d8834896282e8832002"
+  },
+  "playlist_name": "Epic Journeys",
+  "duration": 685,
+  "songs": [
+    {
+      "_id": {
+        "$oid": "66f57c7734896282e8831929"
+      },
+      "timestamp_added": {
+        "$date": "2024-11-02T16:59:37.223Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "66f57c7734896282e8831925"
+      },
+      "timestamp_added": {
+        "$date": "2024-11-02T16:59:31.688Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "66f57c7734896282e8831930"
+      },
+      "timestamp_added": {
+        "$date": "2024-11-02T16:59:12.205Z"
+      }
+    }
+  ],
+  "picture": "",
+  "comments": [
+    {
+      "commenter_name": "Jordan",
+      "comment_text": "This is exactly what I needed for my road trip playlist!",
+      "timestamp": ""
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "77f57d8834896282e8832003"
+  },
+  "playlist_name": "Morning Tunes",
+  "duration": 630,
+  "songs": [
+    {
+      "_id": {
+        "$oid": "66f57c7734896282e8831926"
+      },
+      "timestamp_added": {
+        "$date": "2024-11-02T17:00:30.599Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "66f57c7734896282e8831927"
+      },
+      "timestamp_added": {
+        "$date": "2024-11-02T17:00:04.907Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "66f57c7734896282e8831930"
+      },
+      "timestamp_added": {
+        "$date": "2024-11-02T16:59:57.390Z"
+      }
+    }
+  ],
+  "picture": "",
+  "comments": [
+    {
+      "commenter_name": "Taylor",
+      "comment_text": "Great way to start the day! Love the vibe here.",
+      "timestamp": ""
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "77f57d8834896282e8832009"
+  },
+  "playlist_name": "Cool Journeys",
+  "duration": 685,
+  "songs": [
+    {
+      "_id": {
+        "$oid": "66f57c7734896282e8831929"
+      },
+      "timestamp_added": {
+        "$date": "2024-11-02T17:04:21.578Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "66f57c7734896282e8831931"
+      },
+      "timestamp_added": {
+        "$date": "2024-11-02T17:04:04.744Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "66f57c7734896282e8831928"
+      },
+      "timestamp_added": {
+        "$date": "2024-11-02T17:02:07.237Z"
+      }
+    }
+  ],
+  "picture": "",
+  "comments": [
+    {
+      "commenter_name": "Morgan",
+      "comment_text": "Love the flow of this playlist, super chill and uplifting!",
+      "timestamp": ""
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6727830474f5746329a0455e"
+  },
+  "playlist_name": "Deez Nuts",
+  "songs": [
+    {
+      "_id": {
+        "$oid": "66f57c7734896282e8831930"
+      },
+      "timestamp_added": {
+        "$date": "2024-11-03T14:29:08.830Z"
+      }
+    }
+  ],
+  "comments": [],
+  "duration": 0,
+  "picture": ""
+}]

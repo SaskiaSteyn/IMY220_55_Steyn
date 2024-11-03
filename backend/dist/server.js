@@ -9,7 +9,7 @@ function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyri
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 // Database URL and client setup
-var url = ;
+var url = '';
 var client = new _mongodb.MongoClient(url);
 
 // Create the Express app
@@ -22,27 +22,26 @@ function connectDB() {
   return _connectDB.apply(this, arguments);
 } // LOGIN, SIGNUP, LOGOUT
 function _connectDB() {
-  _connectDB = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8() {
-    return _regeneratorRuntime().wrap(function _callee8$(_context9) {
-      while (1) switch (_context9.prev = _context9.next) {
+  _connectDB = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15() {
+    return _regeneratorRuntime().wrap(function _callee15$(_context16) {
+      while (1) switch (_context16.prev = _context16.next) {
         case 0:
-          _context9.prev = 0;
-          _context9.next = 3;
+          _context16.prev = 0;
+          _context16.next = 3;
           return client.connect();
         case 3:
-          console.log("MongoDB connected");
-          _context9.next = 10;
+          _context16.next = 9;
           break;
-        case 6:
-          _context9.prev = 6;
-          _context9.t0 = _context9["catch"](0);
-          console.error("MongoDB connection error:", _context9.t0);
+        case 5:
+          _context16.prev = 5;
+          _context16.t0 = _context16["catch"](0);
+          console.error("MongoDB connection error:", _context16.t0);
           process.exit(1); // Exit process if unable to connect to MongoDB
-        case 10:
+        case 9:
         case "end":
-          return _context9.stop();
+          return _context16.stop();
       }
-    }, _callee8, null, [[0, 6]]);
+    }, _callee15, null, [[0, 5]]);
   }));
   return _connectDB.apply(this, arguments);
 }
@@ -146,137 +145,417 @@ app.post('/refresh', /*#__PURE__*/function () {
   };
 }());
 
-// PLAYLISTS CRUD
-
-// Fetch playlists associated with the logged-in user
-app.post('/playlists', /*#__PURE__*/function () {
+//update user profile
+app.put('/updateProfile', /*#__PURE__*/function () {
   var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(req, res) {
-    var userId, database, col, playlists, _database, _col, user;
+    var _req$body, userId, userName, displayName, pronouns, email, profilePicture, database, col, result;
     return _regeneratorRuntime().wrap(function _callee3$(_context3) {
       while (1) switch (_context3.prev = _context3.next) {
         case 0:
-          console.log("Fetching playlists for user:", req.body);
-          userId = req.body.userId;
+          _req$body = req.body, userId = _req$body.userId, userName = _req$body.userName, displayName = _req$body.displayName, pronouns = _req$body.pronouns, email = _req$body.email, profilePicture = _req$body.profilePicture;
           if (userId) {
-            _context3.next = 17;
+            _context3.next = 3;
             break;
           }
+          return _context3.abrupt("return", res.status(400).json({
+            success: false,
+            message: "User ID is required."
+          }));
+        case 3:
           _context3.prev = 3;
           database = client.db('PlaylistrDB'); // Use the already connected client
-          col = database.collection("playlists"); //Show all playlists
+          col = database.collection("users"); // Update user profile
           _context3.next = 8;
-          return col.find().toArray();
+          return col.updateOne({
+            '_id': new _mongodb.ObjectId(userId)
+          }, {
+            $set: {
+              username: userName,
+              displayname: displayName,
+              pronouns: pronouns,
+              email: email,
+              profilePicture: profilePicture
+            }
+          });
         case 8:
-          playlists = _context3.sent;
-          res.json(playlists);
+          result = _context3.sent;
+          if (result.modifiedCount > 0) {
+            res.json({
+              success: true,
+              message: "Profile updated."
+            });
+          } else {
+            res.status(200).json({
+              success: false,
+              message: "No changes made."
+            });
+          }
           _context3.next = 16;
           break;
         case 12:
           _context3.prev = 12;
           _context3.t0 = _context3["catch"](3);
-          console.error("Error fetching playlists:", _context3.t0);
+          console.error("Error updating profile:", _context3.t0);
           res.status(500).json({
             success: false,
-            message: "Failed to fetch playlists."
+            message: "Failed to update profile."
           });
         case 16:
-          return _context3.abrupt("return");
-        case 17:
-          _context3.prev = 17;
-          _database = client.db('PlaylistrDB'); // Use the already connected client
-          _col = _database.collection("users_full"); // Find playlists by userId
-          _context3.next = 22;
-          return _col.findOne({
-            _id: new _mongodb.ObjectId(userId)
-          });
-        case 22:
-          user = _context3.sent;
-          res.json(user.playlists);
-          _context3.next = 30;
-          break;
-        case 26:
-          _context3.prev = 26;
-          _context3.t1 = _context3["catch"](17);
-          console.error("Error fetching playlists:", _context3.t1);
-          res.status(500).json({
-            success: false,
-            message: "Failed to fetch playlists."
-          });
-        case 30:
         case "end":
           return _context3.stop();
       }
-    }, _callee3, null, [[3, 12], [17, 26]]);
+    }, _callee3, null, [[3, 12]]);
   }));
   return function (_x5, _x6) {
     return _ref3.apply(this, arguments);
   };
 }());
 
-// Get a specific playlist
-app.post('/playlist', /*#__PURE__*/function () {
+//fetch all users that do not match the users array
+app.post('/users', /*#__PURE__*/function () {
   var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(req, res) {
-    var id, database, col, songsCol, playlist, songIds, songs, _loop, i;
-    return _regeneratorRuntime().wrap(function _callee4$(_context5) {
+    var database, col, usersArray, users;
+    return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+      while (1) switch (_context4.prev = _context4.next) {
+        case 0:
+          _context4.prev = 0;
+          database = client.db('PlaylistrDB'); // Use the already connected client
+          col = database.collection("users");
+          usersArray = req.body.users.map(function (user) {
+            return new _mongodb.ObjectId(user);
+          }); // Find user by either username or email
+          _context4.next = 6;
+          return col.find({
+            _id: {
+              $nin: usersArray
+            }
+          }).toArray();
+        case 6:
+          users = _context4.sent;
+          if (users) {
+            res.json({
+              success: true,
+              users: users
+            });
+          } else {
+            res.json({
+              success: false,
+              message: "No users found"
+            });
+          }
+          _context4.next = 14;
+          break;
+        case 10:
+          _context4.prev = 10;
+          _context4.t0 = _context4["catch"](0);
+          console.error("Error during refresh:", _context4.t0);
+          res.status(500).json({
+            success: false,
+            message: "Internal Server Error"
+          });
+        case 14:
+        case "end":
+          return _context4.stop();
+      }
+    }, _callee4, null, [[0, 10]]);
+  }));
+  return function (_x7, _x8) {
+    return _ref4.apply(this, arguments);
+  };
+}());
+
+//add friend to friend array on user
+app.put('/addFriend', /*#__PURE__*/function () {
+  var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(req, res) {
+    var _req$body2, userId, friendId, database, col, result;
+    return _regeneratorRuntime().wrap(function _callee5$(_context5) {
       while (1) switch (_context5.prev = _context5.next) {
         case 0:
-          console.log("Fetching playlist:", req.body);
-          id = req.body.id;
-          if (id) {
-            _context5.next = 4;
+          _req$body2 = req.body, userId = _req$body2.userId, friendId = _req$body2.friendId;
+          if (!(!userId || !friendId)) {
+            _context5.next = 3;
             break;
           }
           return _context5.abrupt("return", res.status(400).json({
             success: false,
+            message: "User ID and Friend ID are required."
+          }));
+        case 3:
+          _context5.prev = 3;
+          database = client.db('PlaylistrDB'); // Use the already connected client
+          col = database.collection("users"); // Update user profile
+          _context5.next = 8;
+          return col.updateOne({
+            '_id': new _mongodb.ObjectId(userId)
+          }, {
+            $push: {
+              friends: new _mongodb.ObjectId(friendId)
+            }
+          });
+        case 8:
+          result = _context5.sent;
+          if (result.modifiedCount > 0) {
+            res.json({
+              success: true,
+              message: "Friend added."
+            });
+          } else {
+            res.status(200).json({
+              success: false,
+              message: "No changes made."
+            });
+          }
+          _context5.next = 16;
+          break;
+        case 12:
+          _context5.prev = 12;
+          _context5.t0 = _context5["catch"](3);
+          console.error("Error adding friend:", _context5.t0);
+          res.status(500).json({
+            success: false,
+            message: "Failed to add friend."
+          });
+        case 16:
+        case "end":
+          return _context5.stop();
+      }
+    }, _callee5, null, [[3, 12]]);
+  }));
+  return function (_x9, _x10) {
+    return _ref5.apply(this, arguments);
+  };
+}());
+
+//get users friends
+app.post('/friends', /*#__PURE__*/function () {
+  var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(req, res) {
+    var database, col, friendsArray, users;
+    return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+      while (1) switch (_context6.prev = _context6.next) {
+        case 0:
+          _context6.prev = 0;
+          database = client.db('PlaylistrDB'); // Use the already connected client
+          col = database.collection("users");
+          friendsArray = req.body.friends.map(function (friend) {
+            return new _mongodb.ObjectId(friend);
+          }); // Find user by either username or email
+          _context6.next = 6;
+          return col.find({
+            _id: {
+              $in: friendsArray
+            }
+          }).toArray();
+        case 6:
+          users = _context6.sent;
+          if (users) {
+            res.json({
+              success: true,
+              users: users
+            });
+          } else {
+            res.json({
+              success: false,
+              message: "No users found"
+            });
+          }
+          _context6.next = 14;
+          break;
+        case 10:
+          _context6.prev = 10;
+          _context6.t0 = _context6["catch"](0);
+          console.error("Error during refresh:", _context6.t0);
+          res.status(500).json({
+            success: false,
+            message: "Internal Server Error"
+          });
+        case 14:
+        case "end":
+          return _context6.stop();
+      }
+    }, _callee6, null, [[0, 10]]);
+  }));
+  return function (_x11, _x12) {
+    return _ref6.apply(this, arguments);
+  };
+}());
+
+//get user by ID
+app.post('/user', /*#__PURE__*/function () {
+  var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(req, res) {
+    var database, col, user;
+    return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+      while (1) switch (_context7.prev = _context7.next) {
+        case 0:
+          _context7.prev = 0;
+          database = client.db('PlaylistrDB'); // Use the already connected client
+          col = database.collection("users"); // Find user by either username or email
+          _context7.next = 5;
+          return col.findOne({
+            _id: new _mongodb.ObjectId(req.body.userId)
+          });
+        case 5:
+          user = _context7.sent;
+          if (user) {
+            res.json({
+              success: true,
+              user: user
+            });
+          } else {
+            res.json({
+              success: false,
+              message: "No such user"
+            });
+          }
+          _context7.next = 13;
+          break;
+        case 9:
+          _context7.prev = 9;
+          _context7.t0 = _context7["catch"](0);
+          console.error("Error during refresh:", _context7.t0);
+          res.status(500).json({
+            success: false,
+            message: "Internal Server Error"
+          });
+        case 13:
+        case "end":
+          return _context7.stop();
+      }
+    }, _callee7, null, [[0, 9]]);
+  }));
+  return function (_x13, _x14) {
+    return _ref7.apply(this, arguments);
+  };
+}());
+
+// PLAYLISTS CRUD
+
+// Fetch playlists associated with the logged-in user
+app.post('/playlists', /*#__PURE__*/function () {
+  var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(req, res) {
+    var userId, database, col, playlists, _database, _col, user;
+    return _regeneratorRuntime().wrap(function _callee8$(_context8) {
+      while (1) switch (_context8.prev = _context8.next) {
+        case 0:
+          userId = req.body.userId;
+          if (userId) {
+            _context8.next = 16;
+            break;
+          }
+          _context8.prev = 2;
+          database = client.db('PlaylistrDB'); // Use the already connected client
+          col = database.collection("playlists"); //Show all playlists
+          _context8.next = 7;
+          return col.find().toArray();
+        case 7:
+          playlists = _context8.sent;
+          res.json(playlists);
+          _context8.next = 15;
+          break;
+        case 11:
+          _context8.prev = 11;
+          _context8.t0 = _context8["catch"](2);
+          console.error("Error fetching playlists:", _context8.t0);
+          res.status(500).json({
+            success: false,
+            message: "Failed to fetch playlists."
+          });
+        case 15:
+          return _context8.abrupt("return");
+        case 16:
+          _context8.prev = 16;
+          _database = client.db('PlaylistrDB'); // Use the already connected client
+          _col = _database.collection("users_full"); // Find playlists by userId
+          _context8.next = 21;
+          return _col.findOne({
+            _id: new _mongodb.ObjectId(userId)
+          });
+        case 21:
+          user = _context8.sent;
+          res.json(user.playlists);
+          _context8.next = 29;
+          break;
+        case 25:
+          _context8.prev = 25;
+          _context8.t1 = _context8["catch"](16);
+          console.error("Error fetching playlists:", _context8.t1);
+          res.status(500).json({
+            success: false,
+            message: "Failed to fetch playlists."
+          });
+        case 29:
+        case "end":
+          return _context8.stop();
+      }
+    }, _callee8, null, [[2, 11], [16, 25]]);
+  }));
+  return function (_x15, _x16) {
+    return _ref8.apply(this, arguments);
+  };
+}());
+
+// Get a specific playlist
+app.post('/playlist', /*#__PURE__*/function () {
+  var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(req, res) {
+    var id, database, col, songsCol, playlist, songIds, songs, _loop, i;
+    return _regeneratorRuntime().wrap(function _callee9$(_context10) {
+      while (1) switch (_context10.prev = _context10.next) {
+        case 0:
+          id = req.body.id;
+          if (id) {
+            _context10.next = 3;
+            break;
+          }
+          return _context10.abrupt("return", res.status(400).json({
+            success: false,
             message: "Playlist ID is required."
           }));
-        case 4:
-          _context5.prev = 4;
+        case 3:
+          _context10.prev = 3;
           database = client.db('PlaylistrDB'); // Use the already connected client
           col = database.collection("playlists");
           songsCol = database.collection("songs"); // Fetch playlist by its ID
-          _context5.next = 10;
+          _context10.next = 9;
           return col.findOne({
             '_id': new _mongodb.ObjectId(id)
           });
-        case 10:
-          playlist = _context5.sent;
+        case 9:
+          playlist = _context10.sent;
           songIds = playlist.songs.map(function (song) {
             return new _mongodb.ObjectId(song._id);
           });
-          _context5.next = 14;
+          _context10.next = 13;
           return songsCol.find({
             '_id': {
               $in: songIds
             }
           }).toArray();
-        case 14:
-          songs = _context5.sent;
+        case 13:
+          songs = _context10.sent;
           _loop = /*#__PURE__*/_regeneratorRuntime().mark(function _loop(i) {
-            return _regeneratorRuntime().wrap(function _loop$(_context4) {
-              while (1) switch (_context4.prev = _context4.next) {
+            return _regeneratorRuntime().wrap(function _loop$(_context9) {
+              while (1) switch (_context9.prev = _context9.next) {
                 case 0:
                   songs[i].timestamp_added = playlist.songs.find(function (song) {
                     return song._id.toString() === songs[i]._id.toString();
                   }).timestamp_added;
                 case 1:
                 case "end":
-                  return _context4.stop();
+                  return _context9.stop();
               }
             }, _loop);
           });
           i = 0;
-        case 17:
+        case 16:
           if (!(i < songs.length)) {
-            _context5.next = 22;
+            _context10.next = 21;
             break;
           }
-          return _context5.delegateYield(_loop(i), "t0", 19);
-        case 19:
+          return _context10.delegateYield(_loop(i), "t0", 18);
+        case 18:
           i++;
-          _context5.next = 17;
+          _context10.next = 16;
           break;
-        case 22:
+        case 21:
           playlist.songs = songs;
           if (playlist) {
             res.json(playlist);
@@ -286,53 +565,114 @@ app.post('/playlist', /*#__PURE__*/function () {
               message: "Playlist not found."
             });
           }
-          _context5.next = 30;
+          _context10.next = 29;
           break;
-        case 26:
-          _context5.prev = 26;
-          _context5.t1 = _context5["catch"](4);
-          console.error("Error fetching playlist:", _context5.t1);
+        case 25:
+          _context10.prev = 25;
+          _context10.t1 = _context10["catch"](3);
+          console.error("Error fetching playlist:", _context10.t1);
           res.status(500).json({
             success: false,
             message: "Failed to fetch playlist."
           });
-        case 30:
+        case 29:
         case "end":
-          return _context5.stop();
+          return _context10.stop();
       }
-    }, _callee4, null, [[4, 26]]);
+    }, _callee9, null, [[3, 25]]);
   }));
-  return function (_x7, _x8) {
-    return _ref4.apply(this, arguments);
+  return function (_x17, _x18) {
+    return _ref9.apply(this, arguments);
+  };
+}());
+app.post('/createPlaylist', /*#__PURE__*/function () {
+  var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(req, res) {
+    var _req$body3, playlistName, userId, database, col, result;
+    return _regeneratorRuntime().wrap(function _callee10$(_context11) {
+      while (1) switch (_context11.prev = _context11.next) {
+        case 0:
+          _req$body3 = req.body, playlistName = _req$body3.playlistName, userId = _req$body3.userId;
+          if (playlistName) {
+            _context11.next = 3;
+            break;
+          }
+          return _context11.abrupt("return", res.status(400).json({
+            success: false,
+            message: "Playlist Name is required."
+          }));
+        case 3:
+          _context11.prev = 3;
+          database = client.db('PlaylistrDB'); // Use the already connected client
+          col = database.collection("playlists"); // Create a new playlist
+          _context11.next = 8;
+          return col.insertOne({
+            _id: new _mongodb.ObjectId(),
+            playlist_name: playlistName,
+            songs: [],
+            comments: [],
+            duration: 0,
+            picture: ""
+          });
+        case 8:
+          result = _context11.sent;
+          if (result.insertedCount > 0) {
+            res.json({
+              success: true,
+              message: "Playlist created."
+            });
+          } else {
+            res.status(500).json({
+              success: false,
+              message: "Failed to create playlist."
+            });
+          }
+          _context11.next = 16;
+          break;
+        case 12:
+          _context11.prev = 12;
+          _context11.t0 = _context11["catch"](3);
+          console.error("Error creating playlist:", _context11.t0);
+          res.status(500).json({
+            success: false,
+            message: "Failed to create playlist."
+          });
+        case 16:
+        case "end":
+          return _context11.stop();
+      }
+    }, _callee10, null, [[3, 12]]);
+  }));
+  return function (_x19, _x20) {
+    return _ref10.apply(this, arguments);
   };
 }());
 
 //SONGS CRUD
 app.post('/song', /*#__PURE__*/function () {
-  var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(req, res) {
+  var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(req, res) {
     var id, database, col, song;
-    return _regeneratorRuntime().wrap(function _callee5$(_context6) {
-      while (1) switch (_context6.prev = _context6.next) {
+    return _regeneratorRuntime().wrap(function _callee11$(_context12) {
+      while (1) switch (_context12.prev = _context12.next) {
         case 0:
           id = req.body.id;
           if (id) {
-            _context6.next = 3;
+            _context12.next = 3;
             break;
           }
-          return _context6.abrupt("return", res.status(400).json({
+          return _context12.abrupt("return", res.status(400).json({
             success: false,
             message: "Playlist ID is required."
           }));
         case 3:
-          _context6.prev = 3;
+          _context12.prev = 3;
           database = client.db('PlaylistrDB'); // Use the already connected client
           col = database.collection("songs"); // Fetch playlist by its ID
-          _context6.next = 8;
+          _context12.next = 8;
           return col.findOne({
             '_id': new _mongodb.ObjectId(id)
           });
         case 8:
-          song = _context6.sent;
+          song = _context12.sent;
           if (song) {
             res.json(song);
           } else {
@@ -341,42 +681,42 @@ app.post('/song', /*#__PURE__*/function () {
               message: "Songs not found."
             });
           }
-          _context6.next = 16;
+          _context12.next = 16;
           break;
         case 12:
-          _context6.prev = 12;
-          _context6.t0 = _context6["catch"](3);
-          console.error("Error fetching playlist:", _context6.t0);
+          _context12.prev = 12;
+          _context12.t0 = _context12["catch"](3);
+          console.error("Error fetching playlist:", _context12.t0);
           res.status(500).json({
             success: false,
             message: "Failed to fetch songs."
           });
         case 16:
         case "end":
-          return _context6.stop();
+          return _context12.stop();
       }
-    }, _callee5, null, [[3, 12]]);
+    }, _callee11, null, [[3, 12]]);
   }));
-  return function (_x9, _x10) {
-    return _ref5.apply(this, arguments);
+  return function (_x21, _x22) {
+    return _ref11.apply(this, arguments);
   };
 }());
 app.post('/songs', /*#__PURE__*/function () {
-  var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(req, res) {
+  var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(req, res) {
     var id, database, col, songs;
-    return _regeneratorRuntime().wrap(function _callee6$(_context7) {
-      while (1) switch (_context7.prev = _context7.next) {
+    return _regeneratorRuntime().wrap(function _callee12$(_context13) {
+      while (1) switch (_context13.prev = _context13.next) {
         case 0:
           id = req.body.id; // if (!id) {
           //     return res.status(400).json({ success: false, message: "Playlist ID is required." });
           // }
-          _context7.prev = 1;
+          _context13.prev = 1;
           database = client.db('PlaylistrDB'); // Use the already connected client
           col = database.collection("songs"); // Fetch songs by its ID
-          _context7.next = 6;
+          _context13.next = 6;
           return col.find().toArray();
         case 6:
-          songs = _context7.sent;
+          songs = _context13.sent;
           if (songs) {
             res.json(songs);
           } else {
@@ -385,64 +725,64 @@ app.post('/songs', /*#__PURE__*/function () {
               message: "Songs not found."
             });
           }
-          _context7.next = 14;
+          _context13.next = 14;
           break;
         case 10:
-          _context7.prev = 10;
-          _context7.t0 = _context7["catch"](1);
-          console.error("Error fetching playlist:", _context7.t0);
+          _context13.prev = 10;
+          _context13.t0 = _context13["catch"](1);
+          console.error("Error fetching playlist:", _context13.t0);
           res.status(500).json({
             success: false,
             message: "Failed to fetch songs."
           });
         case 14:
         case "end":
-          return _context7.stop();
+          return _context13.stop();
       }
-    }, _callee6, null, [[1, 10]]);
+    }, _callee12, null, [[1, 10]]);
   }));
-  return function (_x11, _x12) {
-    return _ref6.apply(this, arguments);
+  return function (_x23, _x24) {
+    return _ref12.apply(this, arguments);
   };
 }());
 
 // Add a song to a playlist
 app.post('/addSongToPlaylist', /*#__PURE__*/function () {
-  var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(req, res) {
-    var _req$body, playlist_id, song_id, database, col, checkIfPresent, result;
-    return _regeneratorRuntime().wrap(function _callee7$(_context8) {
-      while (1) switch (_context8.prev = _context8.next) {
+  var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(req, res) {
+    var _req$body4, playlist_id, song_id, database, col, checkIfPresent, result;
+    return _regeneratorRuntime().wrap(function _callee13$(_context14) {
+      while (1) switch (_context14.prev = _context14.next) {
         case 0:
-          _req$body = req.body, playlist_id = _req$body.playlist_id, song_id = _req$body.song_id;
+          _req$body4 = req.body, playlist_id = _req$body4.playlist_id, song_id = _req$body4.song_id;
           if (!(!playlist_id || !song_id)) {
-            _context8.next = 3;
+            _context14.next = 3;
             break;
           }
-          return _context8.abrupt("return", res.status(400).json({
+          return _context14.abrupt("return", res.status(400).json({
             success: false,
             message: "Playlist ID and Song ID are required."
           }));
         case 3:
-          _context8.prev = 3;
+          _context14.prev = 3;
           database = client.db('PlaylistrDB'); // Use the already connected client
           col = database.collection("playlists");
-          _context8.next = 8;
+          _context14.next = 8;
           return col.findOne({
             '_id': new _mongodb.ObjectId(playlist_id),
             'songs._id': new _mongodb.ObjectId(song_id)
           });
         case 8:
-          checkIfPresent = _context8.sent;
+          checkIfPresent = _context14.sent;
           if (!checkIfPresent) {
-            _context8.next = 11;
+            _context14.next = 11;
             break;
           }
-          return _context8.abrupt("return", res.status(400).json({
+          return _context14.abrupt("return", res.status(400).json({
             success: false,
             message: "Song already present in playlist."
           }));
         case 11:
-          _context8.next = 13;
+          _context14.next = 13;
           return col.updateOne({
             '_id': new _mongodb.ObjectId(playlist_id)
           }, {
@@ -459,7 +799,7 @@ app.post('/addSongToPlaylist', /*#__PURE__*/function () {
             }
           });
         case 13:
-          result = _context8.sent;
+          result = _context14.sent;
           if (result.modifiedCount > 0) {
             res.json({
               success: true,
@@ -471,24 +811,85 @@ app.post('/addSongToPlaylist', /*#__PURE__*/function () {
               message: "Playlist not found."
             });
           }
-          _context8.next = 21;
+          _context14.next = 21;
           break;
         case 17:
-          _context8.prev = 17;
-          _context8.t0 = _context8["catch"](3);
-          console.error("Error adding song to playlist:", _context8.t0);
+          _context14.prev = 17;
+          _context14.t0 = _context14["catch"](3);
+          console.error("Error adding song to playlist:", _context14.t0);
           res.status(500).json({
             success: false,
             message: "Failed to add song to playlist."
           });
         case 21:
         case "end":
-          return _context8.stop();
+          return _context14.stop();
       }
-    }, _callee7, null, [[3, 17]]);
+    }, _callee13, null, [[3, 17]]);
   }));
-  return function (_x13, _x14) {
-    return _ref7.apply(this, arguments);
+  return function (_x25, _x26) {
+    return _ref13.apply(this, arguments);
+  };
+}());
+app.put('/updatePlaylist', /*#__PURE__*/function () {
+  var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(req, res) {
+    var _req$body5, _id, songs, playlist_name, database, col, result;
+    return _regeneratorRuntime().wrap(function _callee14$(_context15) {
+      while (1) switch (_context15.prev = _context15.next) {
+        case 0:
+          _req$body5 = req.body, _id = _req$body5._id, songs = _req$body5.songs, playlist_name = _req$body5.playlist_name;
+          if (!(!_id || !songs)) {
+            _context15.next = 3;
+            break;
+          }
+          return _context15.abrupt("return", res.status(400).json({
+            success: false,
+            message: "Playlist ID and Songs are required."
+          }));
+        case 3:
+          _context15.prev = 3;
+          database = client.db('PlaylistrDB'); // Use the already connected client
+          col = database.collection("playlists"); // Update playlist with new songs
+          _context15.next = 8;
+          return col.updateOne({
+            '_id': new _mongodb.ObjectId(_id)
+          }, {
+            $set: {
+              songs: songs,
+              playlist_name: playlist_name
+            }
+          });
+        case 8:
+          result = _context15.sent;
+          if (result.modifiedCount > 0) {
+            res.json({
+              success: true,
+              message: "Playlist updated."
+            });
+          } else {
+            res.status(200).json({
+              success: false,
+              message: "No changes made."
+            });
+          }
+          _context15.next = 16;
+          break;
+        case 12:
+          _context15.prev = 12;
+          _context15.t0 = _context15["catch"](3);
+          console.error("Error updating playlist:", _context15.t0);
+          res.status(500).json({
+            success: false,
+            message: "Failed to update playlist."
+          });
+        case 16:
+        case "end":
+          return _context15.stop();
+      }
+    }, _callee14, null, [[3, 12]]);
+  }));
+  return function (_x27, _x28) {
+    return _ref14.apply(this, arguments);
   };
 }());
 

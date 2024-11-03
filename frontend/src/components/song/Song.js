@@ -1,43 +1,48 @@
-import React from 'react'
-import { FaCirclePlus, FaImage } from "react-icons/fa6"
-import FriendPreview from '../friends/FriendPreview'
-import AddSongToPlaylist from './AddSongToPlaylist'
+import React, { useState } from 'react';
+import { FaCirclePlus, FaImage } from "react-icons/fa6";
+import FriendPreview from '../friends/FriendPreview';
+import AddSongToPlaylist from './AddSongToPlaylist';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { setCurrentSong } from '../../store/slices/PlayListSlice';
+import { FaPlay } from 'react-icons/fa';
 
+const SingleSong = ({ index, song }) => {
+    const userId = useSelector((state) => state.user.userId);
+    const dispatch = useDispatch();
 
-class SingleSong extends React.Component{
-    
-    constructor(props){
-        super(props);
-        this.addToPlaylist = this.addToPlaylist.bind(this);
-        this.state = { hidden: false }
+    const [hidden, setHidden] = useState(false);
+
+    const addToPlaylist = () => {
+        setHidden(prevHidden => !prevHidden);
+    };
+
+    const setCurrSong = () => {
+        dispatch(setCurrentSong(song));
     }
 
-    addToPlaylist(){
-        this.setState({hidden : !this.state.hidden});
-    }
-    
-    render(){
-        return(
-            <div className="songDiv">
-                <p>{this.props.index+1}.</p>
-                <p className="coverimage_song"><FaImage /></p>
-                <div className="songDetails">
-                    <h4>{this.props.song.title}</h4>
-                    <p>{this.props.song.artists[0]}</p>
-                </div>
-                
-                <p>{this.props.song.duration}</p>
-                <div className="addToPlaylistBtn">
-                    <FaCirclePlus className="add_btn" onClick={this.addToPlaylist}/>
-                    {this.state.hidden && <AddSongToPlaylist song={this.props.song}/>}
-                </div>
-                
-                <FriendPreview friendID="15"/>
-                <FriendPreview friendID="16"/>
+
+
+    return (
+        <div className="songDiv">
+            <p>{index + 1}.</p>
+            <p className="coverimage_song"><FaImage /></p>
+            <div className="songDetails">
+                <h4>{song.title}</h4>
+                <p>{song.artists[0]}</p>
             </div>
-        );
-    }
+            <p>{song.duration}</p>
+            <div className="addToPlaylistBtn">
+                {userId !== '' && <FaCirclePlus className="add_btn" onClick={addToPlaylist} />}
+                {hidden && <AddSongToPlaylist song={song} hideOnClick={addToPlaylist} />}
+            </div>
+            <FriendPreview friendID="15" />
+            <FriendPreview friendID="16" />
+            <div style={{paddingLeft:'5%'}} onClick={setCurrSong}>
+            <FaPlay />
+            </div>
+        </div>
+    );
+};
 
-}
-
-export default SingleSong
+export default SingleSong;

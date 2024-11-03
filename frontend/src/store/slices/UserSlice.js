@@ -8,7 +8,8 @@ export const userSlice = createSlice({
         displayName: "",
         pronouns: "",
         email: "",
-        profilePicture: ""
+        profilePicture: "",
+        friends: []
     },
     reducers: {
         setUserId: (state, action) => {
@@ -28,10 +29,13 @@ export const userSlice = createSlice({
         },
         setProfilePicture: (state, action) => {
             state.profilePicture = action.payload;
+        },
+        setFriends: (state, action) => {
+            state.friends = action.payload;
         }
     },
 });
 
-export const { setUserId, setUserName, setDisplayName, setPronouns, setEmail, setProfilePicture } = userSlice.actions
+export const { setUserId, setUserName, setDisplayName, setPronouns, setEmail, setProfilePicture, setFriends } = userSlice.actions
 
 export default userSlice.reducer

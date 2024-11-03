@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
-import { setDisplayName, setEmail, setProfilePicture, setPronouns, setUserId, setUserName } from '../../store/slices/UserSlice'
+import { setDisplayName, setEmail, setFriends, setProfilePicture, setPronouns, setUserId, setUserName } from '../../store/slices/UserSlice'
 
 const Login = ({ setLoginState }) => {
     const [username, setUsername] = React.useState('');
@@ -43,10 +43,8 @@ const Login = ({ setLoginState }) => {
     };
 
     const login = async (event) => {
-        console.log("Login called");
         event.preventDefault();
         if (isFormValid) {
-            console.log("Form valid");
             try {
                 const response = await fetch('http://localhost:3005/login', {
                     method: 'POST',
@@ -66,6 +64,7 @@ const Login = ({ setLoginState }) => {
                     dispatch(setPronouns(data.user.pronouns));
                     dispatch(setEmail(data.user.email));
                     dispatch(setProfilePicture(data.user.profilePicture));
+                    dispatch(setFriends(data.user.friends));
                     setLoginState(true); // Update the global login state
                     navigate('/', { state: { userId: data.user._id }}); // Redirect to home page
                 } else {
